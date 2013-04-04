@@ -25,15 +25,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
-import smile.Network;
-import smile.learning.*;
 import utilities.JdbcUtil;
 import java.util.Date;
 /**
+ * @author Rhiza Mae G. Talavera
+ * 
  * Handles patient information and other manipulation of patient attributes.
- *
  */
 @ViewScoped
 @ManagedBean

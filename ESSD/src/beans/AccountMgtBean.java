@@ -19,6 +19,7 @@ import utilities.JdbcUtil;
 /**
  * @author Arisa C. Ochavez
  *
+ * Backing bean for the user account management functionalities of the application
  */
 @ManagedBean
 @SessionScoped

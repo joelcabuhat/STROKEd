@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 /**
  * @author Arisa C. Ochavez
  *
+ * Model the attributes of a state from the Bayesian network
  */
 @ManagedBean
 public class State implements Serializable {

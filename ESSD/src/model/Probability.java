@@ -5,6 +5,7 @@ import java.io.Serializable;
 /**
  * @author Arisa C. Ochavez
  *
+ * Model for attributes of a probability
  */
 public class Probability implements Serializable {
 

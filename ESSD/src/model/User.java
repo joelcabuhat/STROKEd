@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 /**
  * @author Arisa C. Ochavez
  *
+ * Model attributes of users of the application
  */
 @ManagedBean
 public class User implements Serializable{

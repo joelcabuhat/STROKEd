@@ -25,6 +25,7 @@ import model.UserDataModel;
 /**
  * @author Arisa C. Ochavez
  *
+ * Backing bean for the administrative functionalities of the application
  */
 @ManagedBean
 @SessionScoped

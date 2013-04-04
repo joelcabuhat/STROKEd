@@ -24,8 +24,9 @@ import model.User;
 import beans.InferenceBean;
 
 /**
- * @author Arisa C. Ochavez
- *
+ * @author Arisa C. Ochavez and Rhiza Mae G. Talavera
+ * 
+ * Maps information retrieved from the database to its appropriate class to be used in the application
  */
 public class MapToClass {
 
@@ -57,7 +58,6 @@ public class MapToClass {
 		return user;
 	}
 	
-<<<<<<< HEAD
 	/**
 	 * Maps the patient information retrieved from the database to the Patient class for learning
 	 * 
@@ -65,15 +65,6 @@ public class MapToClass {
 	 * @param rs - pointer to the result of the database query
 	 * @return p - variable containing the patient information from the database
 	 * @throws SQLException
-=======
-
-	/**
-	 * Maps the patient to be fed to network for learning retrieved from the database to the Patient class.
-	 * @param p Patient model.
-	 * @param rs Result set retreived from database.
-	 * @return Mapped patient.
-	 * @throws SQLException Access to mysql database.
->>>>>>> 66344b793f54b1ddd4903dfbf630566b6b242634
 	 */
 	public static Patient mapPLearnNet(Patient p, ResultSet rs) throws SQLException {
 		p.setCaseNum(rs.getInt("case_num"));
@@ -134,7 +125,6 @@ public class MapToClass {
 		
 		return type;
 	}
-<<<<<<< HEAD
 
 	/**
 	 * Maps the patient information retrieved from the database to the Patient class
@@ -143,15 +133,6 @@ public class MapToClass {
 	 * @param rs - pointer to the result of the database query
 	 * @return p - variable containing the patient information from the database
 	 * @throws SQLException
-=======
-	
-	/**
-	 * Maps the patient for patient information tab from the database to the Patient class.
-	 * @param p Patient.
-	 * @param rs Result set queried from database;
-	 * @return Patient.
-	 * @throws SQLException Access to mysql database.
->>>>>>> 66344b793f54b1ddd4903dfbf630566b6b242634
 	 */
 	public static Patient mapP(Patient p, ResultSet rs) throws SQLException {
 		p.setCaseNum(rs.getInt("case_num"));
@@ -190,33 +171,18 @@ public class MapToClass {
 			p.setRosQuestions(rosQList);		
 			p.setRosDiagnosis(xp.evaluate("/data/rosier/diagnosis/text()", doc.getDocumentElement()));
 			p.setRosScore(Integer.parseInt(xp.evaluate("/data/rosier/score/text()", doc.getDocumentElement())));
-<<<<<<< HEAD
-			
-			String tempRf=xp.evaluate("/data/spt/risk-factors/text()", doc.getDocumentElement());
-			String[] rfArray=tempRf.split("@");
-			
-			List<String> rfList=new ArrayList<String>();
-			List<String> nameRfs=new ArrayList<String>();
-			List<String> rangeRfs=new ArrayList<String>();
-			
-=======
 			String tempRf=xp.evaluate("/data/spt/risk-factors/text()", doc.getDocumentElement());
 			String[] rfArray=tempRf.split("@");
 			List<String> rfList=new ArrayList<String>();
 			List<String> nameRfs=new ArrayList<String>();
 			List<String> rangeRfs=new ArrayList<String>();
->>>>>>> 66344b793f54b1ddd4903dfbf630566b6b242634
+			
 			if(rfArray.length>0 && !rfArray[0].equals("")){
 				for(String i:rfArray){
 					rfList.add(i);
 					String[] arraySplit=i.split("#");
-<<<<<<< HEAD
 					nameRfs.add(arraySplit[8]);
 					rangeRfs.add(arraySplit[14]);
-=======
-						nameRfs.add(arraySplit[8]);
-						rangeRfs.add(arraySplit[14]);
->>>>>>> 66344b793f54b1ddd4903dfbf630566b6b242634
 				}
 			}
 			

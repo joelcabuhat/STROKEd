@@ -17,6 +17,7 @@ import smile.SMILEException;
 /**
  * @author Arisa C. Ochavez
  *
+ * Connects the application to the Bayesian Network through the functionalities of the jSMILE library
  */
 @ManagedBean
 @SessionScoped
@@ -97,11 +98,7 @@ public class InferenceBean implements Serializable {
 		double [] typeValues = null;
 		nodeName = nodeName.replace(' ', '_');
 		stateName = stateName.replace(' ', '_');
-<<<<<<< HEAD
-		
-=======
-		//System.out.println("WAAAAAAAAAAA " + net.getName());
->>>>>>> 66344b793f54b1ddd4903dfbf630566b6b242634
+
 		//Read current network from file
 		net.updateBeliefs();
 		
@@ -192,11 +189,7 @@ public class InferenceBean implements Serializable {
 		
 		String[] outcomeIds = net.getOutcomeIds(nodeName);
 		int idx;
-<<<<<<< HEAD
-		
-=======
-		//System.out.println("LENGTH: "+outcomeIds.length);
->>>>>>> 66344b793f54b1ddd4903dfbf630566b6b242634
+
 		for (idx = 0; idx < outcomeIds.length; idx++) {
 			if (stateName.equals(outcomeIds[idx])){
 				break;

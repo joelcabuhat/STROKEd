@@ -4,8 +4,9 @@ import javax.faces.bean.ManagedBean;
 
 @ManagedBean
 /**
+ * @author Rhiza Mae G. Talavera
+ * 
  * Model for the result/output of ROSIER scoring system.
- *
  */
 public class Result {
 

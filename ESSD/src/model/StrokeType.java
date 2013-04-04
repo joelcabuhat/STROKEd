@@ -3,6 +3,7 @@ package model;
 /**
  * @author Arisa C. Ochavez
  *
+ * Model attributes of stroke types
  */
 public class StrokeType {
 

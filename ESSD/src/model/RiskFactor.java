@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 /**
  * @author Arisa C. Ochavez
  *
+ * Model the attributes of a Risk Factor
  */
 @ManagedBean
 public class RiskFactor implements Serializable {

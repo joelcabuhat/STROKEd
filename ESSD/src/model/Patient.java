@@ -6,8 +6,9 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 /**
+ * @author Rhiza Mae G. Talavera
+ * 
  * Model for patient attributes.
- *
  */
 @ManagedBean
 public class Patient implements Serializable {

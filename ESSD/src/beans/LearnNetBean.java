@@ -1,11 +1,9 @@
 package beans;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,11 +25,7 @@ import javax.xml.xpath.XPathFactory;
 import mapping.MapToClass;
 import model.Patient;
 import model.PatientDataModel;
-import model.RiskFactor;
-
-
 import org.primefaces.context.RequestContext;
-import org.primefaces.event.SelectEvent;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -43,16 +37,13 @@ import utilities.JdbcUtil;
 
 
 /**
+ * @author Rhiza Mae G. Talavera
  * 
  * This class reads an xml file then feeds it to the system's network for dynamic learning. 
- *
  */
 @ManagedBean
 @SessionScoped
 public class LearnNetBean {
-	
-	/* Global Variables */
-	private static final long serialVersionUID = 1L;
 	
 	protected Patient selectedP;
 	protected List<Patient> filteredP;
@@ -245,11 +236,8 @@ public class LearnNetBean {
 		XPath xp = XPathFactory.newInstance().newXPath();
 		File details = new File("ESSD_Files/System_Network/LearnNetwork.xml");
 		
-		int ctr=-1;
-
 		for (Patient i: selectedPs) {
 			
-			ctr++;
 			String tempCaseNum=""+i.getCaseNum();
 			File temp = new File("ESSD_Files/System_Network/LearnNetworkInput.txt");		
 			output = new BufferedWriter(new FileWriter(temp));

@@ -11,6 +11,7 @@ import org.primefaces.model.SelectableDataModel;
 /**
  * @author Arisa C. Ochavez
  *
+ * Risk Factor data model
  */
 @ManagedBean
 public class RiskFactorDataModel extends ListDataModel<RiskFactor> implements SelectableDataModel<RiskFactor>, Serializable {

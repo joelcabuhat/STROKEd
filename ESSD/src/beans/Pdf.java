@@ -1,7 +1,5 @@
 package beans;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.DecimalFormat;
@@ -44,6 +42,8 @@ import com.itextpdf.text.Font;
 
 
 /**
+ * @author Rhiza Mae G. Talavera
+ * 
  * Generates the medical report of the application in pdf form.
  * Servlet implementation class Pdf
  */

@@ -28,7 +28,8 @@ import model.StrokeType;
 
 /**
  * @author Arisa C. Ochavez
- *
+ * 
+ * Backing bean for the Prediction Tool
  */
 @ManagedBean
 @SessionScoped

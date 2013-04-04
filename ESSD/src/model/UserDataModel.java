@@ -12,6 +12,7 @@ import org.primefaces.model.SelectableDataModel;
 /**
  * @author Arisa C. Ochavez
  *
+ * User data model
  */
 @ManagedBean
 public class UserDataModel extends ListDataModel<User> implements SelectableDataModel<User>, Serializable {

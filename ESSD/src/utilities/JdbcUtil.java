@@ -15,16 +15,21 @@ import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-/* Utility for establishing a connection to the database */
+/**
+ * @author Arisa C. Ochavez
+ *
+ * Utility for establishing a connection to the database
+ */
 public class JdbcUtil implements Serializable {
 
 	/**
-	 * 
+	 * Global variables
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/*
-	 * Method that establishes a connection to the database
+	/**
+	 * Method that establishes a connection to the database by reading the details from an XML file (JDBC.cfg.xml)
+	 * @return conn - pointer to the established connection
 	 */
 	public static Connection startConnection () {
 		Connection conn = null;		
