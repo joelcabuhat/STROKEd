@@ -7,24 +7,25 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.model.ListDataModel;
 
 import org.primefaces.model.SelectableDataModel;
-
+/**
+ * Patient data model.
+ *
+ */
 @ManagedBean
 public class PatientDataModel extends ListDataModel<Patient> implements SelectableDataModel<Patient>, Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
-	/*
-	 * Constructor
+	/**
+	 * Constructor of PatientDataModel class.
 	 */
 	public PatientDataModel () {
 		
 	}
   
-	/*
-	 * Constructor with parameter data
+	/**
+	 * Constructor with parameter data.
+	 * @param data Data.
 	 */
     public PatientDataModel(List<Patient> data) {  
         super(data);  
@@ -35,6 +36,9 @@ public class PatientDataModel extends ListDataModel<Patient> implements Selectab
 	/*
 	 * (non-Javadoc)
 	 * @see org.primefaces.model.SelectableDataModel#getRowData(java.lang.String)
+	 */
+	/**
+	 * Gets the row data of selected patient.
 	 */
     public Patient getRowData(String rowKey) {  
         List<Patient> p = (List<Patient>) getWrappedData();  
@@ -51,6 +55,9 @@ public class PatientDataModel extends ListDataModel<Patient> implements Selectab
     /*
      * (non-Javadoc)
      * @see org.primefaces.model.SelectableDataModel#getRowKey(java.lang.Object)
+     */
+    /**
+     * Gets the row key of selected patient.
      */
     public Object getRowKey(Patient p) {  
         return p.getCaseNum();

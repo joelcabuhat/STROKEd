@@ -46,12 +46,15 @@ public class MapToClass {
 		return user;
 	}
 	
-	/*
-	 * Maps the risk factors retrieved from the database to the RiskFactor class
+
+	/**
+	 * Maps the patient to be fed to network for learning retrieved from the database to the Patient class.
+	 * @param p Patient model.
+	 * @param rs Result set retreived from database.
+	 * @return Mapped patient.
+	 * @throws SQLException Access to mysql database.
 	 */
-	
 	public static Patient mapPLearnNet(Patient p, ResultSet rs) throws SQLException {
-		//System.out.println("NUMBERRRRR: "+rs.getInt("case_num"));
 		p.setCaseNum(rs.getInt("case_num"));
 		p.setCaseNumStr(""+rs.getInt("case_num"));
 		return p;
@@ -96,7 +99,14 @@ public class MapToClass {
 		
 		return type;
 	}
-
+	
+	/**
+	 * Maps the patient for patient information tab from the database to the Patient class.
+	 * @param p Patient.
+	 * @param rs Result set queried from database;
+	 * @return Patient.
+	 * @throws SQLException Access to mysql database.
+	 */
 	public static Patient mapP(Patient p, ResultSet rs) throws SQLException {
 		p.setCaseNum(rs.getInt("case_num"));
 		DocumentBuilder dBuilder = null;
@@ -121,11 +131,9 @@ public class MapToClass {
 		doc.getDocumentElement().normalize();
 		
 		try {
-
 			p.setCaseNumStr(p.getCaseNum()+"");
 			p.setDoctor(Integer.parseInt(xp.evaluate("/data/others/doctor/text()", doc.getDocumentElement())));
-			p.setComplaint(xp.evaluate("/data/others/complaint/text()", doc.getDocumentElement()));
-			
+			p.setComplaint(xp.evaluate("/data/others/complaint/text()", doc.getDocumentElement()));		
 			String tempQ=xp.evaluate("/data/rosier/questions/text()", doc.getDocumentElement());
 			String [] rosQArray=tempQ.split("#");
 			List<String> rosQList=new ArrayList<String>();
@@ -136,36 +144,25 @@ public class MapToClass {
 			p.setRosQuestions(rosQList);		
 			p.setRosDiagnosis(xp.evaluate("/data/rosier/diagnosis/text()", doc.getDocumentElement()));
 			p.setRosScore(Integer.parseInt(xp.evaluate("/data/rosier/score/text()", doc.getDocumentElement())));
-			
-			
 			String tempRf=xp.evaluate("/data/spt/risk-factors/text()", doc.getDocumentElement());
-			//System.out.println("String: "+tempRf);
 			String[] rfArray=tempRf.split("@");
-			//System.out.println("LENGTH"+rfArray.length);
 			List<String> rfList=new ArrayList<String>();
 			List<String> nameRfs=new ArrayList<String>();
 			List<String> rangeRfs=new ArrayList<String>();
-			//System.out.println("BASIS: "+rfArray.length);
 			if(rfArray.length>0 && !rfArray[0].equals("")){
 				for(String i:rfArray){
 					rfList.add(i);
 					String[] arraySplit=i.split("#");
-					//if(arraySplit.length>0){
 						nameRfs.add(arraySplit[8]);
 						rangeRfs.add(arraySplit[14]);
-					//}
 				}
 			}
 			p.setListRf(rfList);
 			p.setNameRfs(nameRfs);
 			p.setRangeRfs(rangeRfs);
-			//String st=xp.evaluate("/data/spt/hemorrhagic-stroke/text()", doc.getDocumentElement());
-			
 			p.setProbHemorrhagic(Double.parseDouble(xp.evaluate("/data/spt/hemorrhagic-stroke/text()", doc.getDocumentElement())));
 			p.setProbIschemic(Double.parseDouble(xp.evaluate("/data/spt/ischemic-stroke/text()", doc.getDocumentElement())));
 			p.setProbNone(Double.parseDouble(xp.evaluate("/data/spt/none/text()", doc.getDocumentElement())));
-			
-			//System.out.println("done mapping ");
 		} catch (XPathExpressionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

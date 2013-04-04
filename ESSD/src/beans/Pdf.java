@@ -44,6 +44,7 @@ import com.itextpdf.text.Font;
 
 
 /**
+ * Generates the medical report of the application in pdf form.
  * Servlet implementation class Pdf
  */
 @ManagedBean
@@ -52,9 +53,11 @@ import com.itextpdf.text.Font;
 public class Pdf extends HttpServlet {
 	private static final long serialVersionUID = 1L; 
 	
+	/**
+	 * Post action of the servlet to create the pdf form for medical report.
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String image2 = getServletContext().getRealPath("images/Report/Rosier1.png");
-     	
      	String image3 = getServletContext().getRealPath("images/Report/ESSD.png");
      	String image4 = getServletContext().getRealPath("images/Report/Header1.png");
      	String imag1 =  getServletContext().getRealPath("images/Report/transparent1.png");
@@ -62,18 +65,12 @@ public class Pdf extends HttpServlet {
      	String image5 = getServletContext().getRealPath("images/Report/Background.png");
      	String image6 = getServletContext().getRealPath("images/Report/Info.png");
      	String image7 = getServletContext().getRealPath("images/Report/Transparent31.png");
-     	String image8 = getServletContext().getRealPath("images/Report/Verified.png");
-     	
-     	
+     	String image8 = getServletContext().getRealPath("images/Report/Verified.png");  	
      	
         response.setContentType("application/pdf");
-        
-        
+               
         try {
         	Image verify= Image.getInstance(image8);
-        	
-
-        	//Image img1 = Image.getInstance(image1);
 			Image rosier = Image.getInstance(image2);
 			Image essd = Image.getInstance(image3);
 			Image transparent1 = Image.getInstance(imag1);
@@ -88,16 +85,11 @@ public class Pdf extends HttpServlet {
             document.open();
 
             
-            info.setAbsolutePosition(0, 600);
-	        
+            info.setAbsolutePosition(0, 600);       
 	        header.setAbsolutePosition(0, 771);
 	        document.add(header);
 	        document.add(transparent3);
-	        
-	        
-
-	        absText(PatientInfoBean.patient.getCaseNumStr(),540,750,13,writer);
-	        
+	        absText(PatientInfoBean.patient.getCaseNumStr(),540,750,13,writer);       
 	        
 	        float heady=transparent1.getAbsoluteY(); 
 
@@ -129,11 +121,11 @@ public class Pdf extends HttpServlet {
         } catch (DocumentException de) {
             throw new IOException(de.getMessage());
         }
-        
-       
-
 	}
 	
+	/**
+	 * Get action of the servlet to create the pdf form for medical report.
+	 */
 	 protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		        throws ServletException, IOException {
 
@@ -146,11 +138,8 @@ public class Pdf extends HttpServlet {
 		     	String image6 = getServletContext().getRealPath("images/Report/Info.png");
 		     	String image7 = getServletContext().getRealPath("images/Report/Transparent31.png");
 		     	String image8 = getServletContext().getRealPath("images/Report/Verified.png");
-		     	
-		     	
-		     	
-		        response.setContentType("application/pdf");
-		        
+     	
+		        response.setContentType("application/pdf");    
 		        
 		        try {
 		        	Image verify= Image.getInstance(image8);
@@ -202,13 +191,15 @@ public class Pdf extends HttpServlet {
 		            document.close();
 		        } catch (DocumentException de) {
 		            throw new IOException(de.getMessage());
-		        }
-		        
-		       
-		        
+		        }        
 		    }
 	 
-	 public static PdfPTable createFirstTable()  throws IOException, DocumentException {
+	/**
+	 * Creates the first table structure for ROSIER report.
+	 * @return PdfTable of the first table for ROSIER.
+	 * @throws DocumentException Pdf creation.
+	 */
+	 public static PdfPTable createFirstTable()  throws  DocumentException {
 	        PdfPTable table = new PdfPTable(2);
 	        table.setWidths(new int[]{4, 1});
 	        PdfPCell cell;
@@ -219,8 +210,7 @@ public class Pdf extends HttpServlet {
 	        cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
 	        cell.setColspan(2);
 	        table.addCell(cell);
-	      
-	        
+	              
 	        table.addCell("Has there been loss of consciousness or syncope?");
 	        table.addCell(RosierBean.holderID.get(0).getValue()+"");
 	        table.addCell("Has there been seizure activity?");
@@ -247,22 +237,30 @@ public class Pdf extends HttpServlet {
 	        return table;
 	    }
 	 
-	 public static PdfPTable rosierResult()  throws IOException, DocumentException {
+	 /**
+	  * Creates the table structure for the result of ROSIER scoring system.
+	  * @return Pdf table for ROSIER result.
+	  * @throws DocumentException Pdf formatting and writing.
+	  */
+	 public static PdfPTable rosierResult()  throws DocumentException {
 		    
 	        PdfPTable table = new PdfPTable(2);
 	        table.setWidths(new int[]{2,2});  
 	        table.getDefaultCell().setBackgroundColor(BaseColor.LIGHT_GRAY);
-	        table.addCell("Provisional Diagnosis");
-	      
+	        table.addCell("Provisional Diagnosis");      
 	        table.addCell("Total Score");
 	        table.getDefaultCell().setBackgroundColor(null);
-	        table.addCell(RosierBean.result.getDiagnosis()+"");
-	        
+	        table.addCell(RosierBean.result.getDiagnosis()+"");        
 	        table.addCell(RosierBean.result.getScore()+"");
 	        return table;
 	    }
 	    
-	    public static PdfPTable riskFactors()  throws IOException, DocumentException {
+	 /**
+	  * Creates the table structure for the list of risk factor for a certain patient.
+	  * @return Pdf table for the list of risk factor of patient.
+	  * @throws DocumentException Pdf creation.
+	  */
+	    public static PdfPTable riskFactors()  throws DocumentException {
 	        
 	        PdfPTable table = new PdfPTable(3);
 	        table.setWidths(new int[]{3,2, 2});              
@@ -283,20 +281,23 @@ public class Pdf extends HttpServlet {
 			    table.addCell("none");
 			    table.addCell("none");
 	        }
-	        
-	       
-	        
+
 	        return table;
 	    }
-	    public static PdfPTable sPTResult()  throws IOException, DocumentException {
+	    
+	    /**
+	     * Creates the table structure for the result of SPT.
+	     * @return PDF table for SPT result.
+	     * @throws DocumentException Pdf creation.
+	     */
+	    public static PdfPTable sPTResult()  throws DocumentException {
 	        
 	        PdfPTable table = new PdfPTable(2);
 	        table.setWidths(new int[]{2, 2});     
 	        table.getDefaultCell().setBackgroundColor(BaseColor.LIGHT_GRAY);
 	        table.addCell("Stoke Type");
 	        table.addCell("Probability");
-	        table.getDefaultCell().setBackgroundColor(null);
-	         
+	        table.getDefaultCell().setBackgroundColor(null);         
 	        for (model.StrokeType i: SPTBean.st) {
 				table.addCell(i.getName()+"");
 				double temp=i.getProbability();
@@ -304,11 +305,14 @@ public class Pdf extends HttpServlet {
 				DecimalFormat fmt = new DecimalFormat("00.00");  
 				String string = fmt.format(temp);
 			    table.addCell(string+"%");
-			}
-	        
+			}        
 	        return table;
 	    }
 	 
+	  /**
+	   *   Watermark for the PDF document of medical report.
+	   *
+	   */
 	 class Watermark extends PdfPageEventHelper {
     	 
 	        Font FONT = new Font(FontFamily.HELVETICA, 52, Font.BOLD, new GrayColor(0.75f));
@@ -336,6 +340,14 @@ public class Pdf extends HttpServlet {
 	        }
 	    }
 	 
+	 /**
+	  * Sets a text to an absolute position in the pdf.
+	  * @param text Text to be added on the PDF.
+	  * @param x The x value for the text on PDF.
+	  * @param y The v value for the text on PDF.
+	  * @param size Font size of text.
+	  * @param writer Pdf writer.
+	  */
 	 private static void absText(String text, int x, int y, int size, PdfWriter writer) {
 	        try {
 	          PdfContentByte cb = writer.getDirectContent();

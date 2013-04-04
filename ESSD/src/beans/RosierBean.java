@@ -15,51 +15,68 @@ import model.RiskFactor;
 import model.RiskFactorDataModel;
 import model.StrokeType;
 
-
+/**
+ * Handles all the storing and manipulation of ROSIER entry for each patient.
+ * 
+ *
+ */
 @ManagedBean
 @SessionScoped
 public class RosierBean implements Serializable {
-
 		
 	private static final long serialVersionUID = 1L;
-	public static Question [] selectedRq;
 	public static List<Question> rq1;
 	public static List<Question> rq2;
 	public static Result result;
 	public static List<Question> holderID;
 
-	public List<Question> getRq2() {
-		return rq2;
-	}
-	public void setRq2(List<Question> rq2) {
-		this.rq2 = rq2;
-	}	
-
+	
+	/**
+	 * Gets the ROSIER diagnosis for each patient.
+	 * @return The result of the ROSIER diagnosis.
+	 */
 	public Result getResult() {
 		return result;
 	}
+	/**
+	 * Sets the ROSIER diagnosis.
+	 * @param result The output of ROSIER scoring system.
+	 */
 	public void setResult(Result result) {
 		RosierBean.result = result;
 	}	
 	
-	public Question [] getSelectedRq() {
-		return selectedRq;
-	}
-
-	public void setSelectedRq(Question [] selectedRq) {
-		RosierBean.selectedRq = selectedRq;
-	}
-
+	/**
+	 * Gets the true or false value for the first 2 questions in ROSIER tab.
+	 * @return List of true/false values. 
+	 */
 	public List<Question> getRq1() {
 		return rq1;
 	}
-
+	/**
+	 * Sets the list of true/false value for the first 2 questions in ROSIER tab.
+	 * @param rq1 List of true/false values.
+	 */
 	public void setRq1(List<Question> rq1) {
 		this.rq1 = rq1;
 	}	
-
-	/*
-	 * Constructor
+	/**
+	 * Gets the true/false value for the last 5 questions in ROSIER tab.
+	 * @return List of true/false values. 
+	 */
+	public List<Question> getRq2() {
+		return rq2;
+	}
+	/**
+	 * Sets the list of true/false value for the last 5 questions in ROSIER tab.
+	 * @param rq2 List of true/false values. 
+	 */
+	public void setRq2(List<Question> rq2) {
+		this.rq2 = rq2;
+	}	
+	
+	/**
+	 * Constructor, initializes the default values for the ROSIER part of the application.
 	 */
 	public RosierBean () {
 		result = new Result();
@@ -68,16 +85,15 @@ public class RosierBean implements Serializable {
 		initializeTable();
 	}
 	
-	
+	/**
+	 * Resets the default values of the ROSIER part of the application.
+	 */
 	public static void start () {
 		initializeTable();
-		//holderID.add(new Question("form:acc:bigTable:0:rques2:0:j_idt208","No"));
-		//holderID.add(new Question("form:acc:bigTable:0:rques2:1:j_idt208","No"));
-		//holderID.add(new Question("form:acc:bigTable:0:rques2:2:j_idt208","No"));
-		//holderID.add(new Question("form:acc:bigTable:0:rques2:3:j_idt208","No"));
-		//holderID.add(new Question("form:acc:bigTable:0:rques2:4:j_idt208","No"));
 	}
-	
+	/**
+	 * Initializes the questions of the ROSIER table.
+	 */
 	public static void initializeTable(){
 		rq1 = new ArrayList<Question>();
 		rq2 = new ArrayList<Question>();
@@ -102,9 +118,11 @@ public class RosierBean implements Serializable {
 	}
 	
 
-	
-	public void decrement(AjaxBehaviorEvent event) {   
-	    
+	/**
+	 * Decrements the score value whenever a checkbox of the first 2 questions in ROSIER tab is checked.
+	 * @param event Select and unselect a checkbox.
+	 */
+	public void decrement(AjaxBehaviorEvent event) {     
 		Boolean value = (Boolean) ((UIInput) event.getComponent()).getValue();
 		String val = (String) ((UIInput) event.getComponent()).getClientId();		
 		String temp="";
@@ -123,7 +141,6 @@ public class RosierBean implements Serializable {
           }
           ctr++;
         }
-		
 		if (value) { 			
 			result.setScore(result.getScore()-1);			
 		} else {
@@ -131,6 +148,11 @@ public class RosierBean implements Serializable {
 		}		
 		whatDiagnosis();
 	}
+	
+	/**
+	 * Increments the score value whenever a checkbox of the last 5 questions in ROSIER tab is checked.
+	 * @param event Select and unselect a checkbox.
+	 */
 	public void increment(AjaxBehaviorEvent event) {
 	
 		Boolean value = (Boolean) ((UIInput) event.getComponent()).getValue();
@@ -151,8 +173,6 @@ public class RosierBean implements Serializable {
           }
           ctr++;
         }		
-		
-		
 		if (value) { 			
 			result.setScore(result.getScore()+1);			
 		} else {
@@ -161,6 +181,9 @@ public class RosierBean implements Serializable {
 		whatDiagnosis();
 	}
 	
+	/**
+	 * Determines the diagnosis of ROSIER scoring system given the score of the patient.
+	 */
 	public static void whatDiagnosis(){
 		String desc1="Patients with a score of 0, -1 or -2 have a low possibility of stroke but not completely excluded. Patient should be discussed with the stroke team and be admitted to the EAU at the RVI.";
 		String desc2="If total score > 0 (1 to 6) a diagnosis of acute stroke is likely. All patients admitted with a suspected stroke, irrespective of score should be admitted to the Emergency Admissions Unit (EAU) at the RVI.";
@@ -171,12 +194,15 @@ public class RosierBean implements Serializable {
 		else{
 			result.setDiagnosis("Non-stroke");
 			result.setDescription(desc1);
-		}
-		
+		}	
 	}
 
 	
-	
+	/**
+	 * 
+	 * Model and structure of the result of ROSIER diagnosis.
+	 *
+	 */
 	public class Result {
 
 		private int score;

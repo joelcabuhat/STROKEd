@@ -219,3 +219,10 @@ body {
 .addUserInput {
 	
 }
+
+.even-row {
+   background-color: #dae4fb;
+}
+.odd-row {
+   background-color: #ffffff;
+}

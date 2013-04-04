@@ -50,8 +50,8 @@ public class LearnNetworkUtil {
 			
 		}
 		else if(caseNumber.equals("3")){
-			arrayCN = new String[111];
-			for(int c=0;c<111;c++){
+			arrayCN = new String[55];
+			for(int c=0;c<55;c++){
 				arrayCN[c]=""+(c+1);
 			}						
 			

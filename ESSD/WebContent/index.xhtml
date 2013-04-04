@@ -85,20 +85,21 @@
 		</center>
 		
 		<!--  Risk Factor Information Dialog Box (SPTBean) -->
+			<p:hotkey bind="esc" handler="infoDialog.hide()"></p:hotkey>
 			<p:dialog header="Risk Factor Information" widgetVar="infoDialog" resizable="false" id="infoDialog"  
-                showEffect="fade" hideEffect="fade" modal="true" styleClass="autoSize" position="left">    
+                showEffect="fade" hideEffect="fade" modal="true" styleClass="autoSize" position="center" style="width: 50% !important;">    
 			
-				<h:panelGrid id="displayInfo" columns="2" style="margin:0 auto; ">             
-				
-					<h:outputText value="Name: " style="font-weight:bold; font-size:12px;"/>  
+				<h:panelGrid id="displayInfo" columns="2" style="margin:0 auto; " rowClasses="even-row, odd-row">             
+					
+					<h:outputText value="Name: " style="font-weight:bold; font-size:12px; "/>  
 					<h:outputText value="#{sPTBean.selectedRf.name}" style="font-size:14px;"/>
-		  
+		  			
 					<h:outputText value="Description: " style="font-weight:bold; font-size:12px;"/>  
 					<h:outputText value="#{sPTBean.selectedRf.description}" style="font-size:14px;"/> 
-					
+
 					<h:outputText value="History: " style="font-weight:bold; font-size:12px;"/>  
 					<h:outputText value="#{sPTBean.selectedRf.history}" style="font-size:14px;"/> 
-					
+
 					<h:outputText value="Signs and Symptoms: " style="font-weight:bold; font-size:12px;"/>  
 					<h:outputText value="#{sPTBean.selectedRf.signs_symptoms}" style="font-size:14px;"/> 
 					
@@ -118,6 +119,7 @@
     
 			
 			<!-- Editing Risk Factor Information Dialog Box (SKDBean) -->
+			<p:hotkey bind="esc" handler="editDialog.hide()"></p:hotkey>
 			<p:dialog header="Edit Risk Factor Information" widgetVar="editDialog" resizable="false" id="editDialog"  
                 showEffect="fade" hideEffect="fade" modal="true" styleClass="autoSize" position="center">    
 				<p:tabView id="displayEdit" style="font-size: 15px;">
@@ -323,6 +325,7 @@
 			</p:dialog>  
    	
 			<!-- Delete Risk Factor Dialog Box (SKDBean) -->
+			<p:hotkey bind="esc" handler="deleteDialog.hide()"></p:hotkey>
 			<p:confirmDialog header="Confirm Delete" widgetVar="deleteDialog" resizable="false" id="deleteDialog"  
 						showEffect="fade" hideEffect="fade" modal="true" styleClass="autoSize" position="center"
 						message="Are you sure you want to delete #{sKDBean.selectedRf.name} ?">    
@@ -335,6 +338,7 @@
 			</p:confirmDialog>
    	
 			<!-- Edit Stroke Dialog Box (SKDBean)-->
+			<p:hotkey bind="esc" handler="editStrokeInfoDialog.hide()"></p:hotkey>
 			<p:dialog header="Edit Stroke Information" widgetVar="editStrokeInfoDialog" resizable="false" id="editStrokeInfoDialog"  
 					showEffect="fade" hideEffect="fade" modal="true" styleClass="autoSize" position="center">    
 				<p:tabView id="editStrokeInfo" style="font-size: 15px;">
@@ -477,6 +481,7 @@
 			</p:dialog>
    	
 			<!-- Add Risk Factor Dialog Box (SKDBean) -->
+			<p:hotkey bind="esc" handler="addDialog.hide()"></p:hotkey>
 			<p:dialog header="Add a Risk Factor" widgetVar="addDialog" resizable="false" id="addDialog"  
 						showEffect="fade" hideEffect="fade" modal="true" styleClass="autoSize" position="center">    
 				<p:tabView id="displayAdd" style="font-size: 15px;">
@@ -653,6 +658,7 @@
 			</p:dialog>  
 			
 			<!-- Dialog for Process Patient Info (SavePrintBean) -->
+			<p:hotkey bind="esc" handler="ppiDialog.hide()"></p:hotkey>
 			<p:dialog header="Process Patient Information" widgetVar="ppiDialog" closable="false" closeOnEscape="false" resizable="false" id="ppiDialog"  
 						showEffect="fade" hideEffect="fade" modal="true" styleClass="autoSize" position="center">    
 				<p:wizard id="displayPpi" widgetVar="displayPpi" flowListener="#{patientInfoBean.onFlowProcess}" style="width:600px; height:250px; font-size:13px"> 
@@ -714,6 +720,7 @@
 			</p:dialog>
 			
 			<!--  Risk Factor Information Dialog Box (SPTBean) -->
+			<p:hotkey bind="esc" handler="infoDialogP.hide()"></p:hotkey>
 			<p:dialog header="Patient Information" widgetVar="infoDialogP" resizable="false" id="infoDialogP"  
 					showEffect="fade" hideEffect="fade" modal="true" styleClass="autoSize" position="left">    
 				<h:panelGrid id="displayInfoP" columns="2" style="margin:0 auto; ">             
@@ -729,6 +736,7 @@
 			</p:dialog>  
 		
 			<!--  Patient Information Dialog Box (PatientInfoBean) -->
+			<p:hotkey bind="esc" handler="patientDialog.hide()"></p:hotkey>
 			<p:dialog header="Patient Information" widgetVar="patientDialog" resizable="false" id="patientDialog"  
 					showEffect="fade" hideEffect="fade" modal="true" style="width:40% !important;" position="center">    
 				<h:panelGrid id="displayPatient" columns="1" style="margin:0 auto; ">  
@@ -828,6 +836,7 @@
 			
 				
 			<!--  Load Patient Dialog Box (PatientInfoBean) -->
+			<p:hotkey bind="esc" handler="loadPatientDialog.hide()"></p:hotkey>
 			<p:dialog header="Load Patient Data" widgetVar="loadPatientDialog" resizable="false" id="loadPatientDialog"  
 					showEffect="fade" hideEffect="fade" modal="true" style="width: 40% !important; " position="center">    
 				<h:panelGrid id="loadPatient" columns="1" style="margin:0 auto; ">             
@@ -908,6 +917,7 @@
     		<!--Admin Tools Dialog Boxes -->
     		
     		<!-- Add User Dialog Box -->
+    		<p:hotkey bind="esc" handler="addUserDialog.hide()"></p:hotkey>
     		<p:dialog header="Add New User" widgetVar="addUserDialog" id="addUserDialog" showEffect="fade" 
     		hideEffect="fade" modal="true">
     			<center>
@@ -962,6 +972,7 @@
     		
     		
     		<!-- Edit User Dialog Box -->
+    		<p:hotkey bind="esc" handler="editUserDialog.hide()"></p:hotkey>
     		<p:dialog header="Edit Users" widgetVar="editUserDialog" id="editUserDialog" showEffect="fade" 
     		hideEffect="fade" modal="true">
     			<center>
@@ -997,6 +1008,7 @@
     		</p:dialog>
     		    		
     		<!-- Edit User Information Dialog Box -->
+    		<p:hotkey bind="esc" handler="editUserInfoDialog.hide()"></p:hotkey>
     		<p:dialog header="Edit User Information" widgetVar="editUserInfoDialog" id="editUserInfoDialog" showEffect="fade" 
     		hideEffect="fade" modal="true">
     			<h:outputText value="Username" />
@@ -1028,6 +1040,7 @@
     			
     		</p:dialog>
     		
+    		<p:hotkey bind="esc" handler="deleteUserDialog.hide()"></p:hotkey>
     		<p:confirmDialog header="Confirm Delete User" widgetVar="deleteUserDialog" resizable="false" id="deleteUserDialog"  
 						showEffect="fade" hideEffect="fade" modal="true" position="center"
 						message="Are you sure you want to delete #{adminBean.selectedUser.username} ?">    
@@ -1040,7 +1053,7 @@
 				</center>			
 			</p:confirmDialog>
 			
-			
+			<p:hotkey bind="esc" handler="learnNetworkDialog.hide()"></p:hotkey>
 			<p:dialog header="Learn Network" widgetVar="learnNetworkDialog" id="learnNetworkDialog" showEffect="fade" 
     		hideEffect="fade" modal="true" resizable="false" style="width: 20% !important;">
     			<center>
@@ -1072,6 +1085,7 @@
     			</center>
     		</p:dialog>
     		
+    		<p:hotkey bind="esc" handler="confirmLearn.hide()"></p:hotkey>
     		<p:confirmDialog message="Proceed learning checked records?" closable="false" closeOnEscape="false" widgetVar="confirmLearn" id="confirmLearn" showEffect="fade"
     		hideEffect="fade" modal="true" resizable="false">
     			<p:commandButton id="learnLater" value="No" style="font-size: 13px; float: right;" oncomplete="confirmLearn.hide()"></p:commandButton>
@@ -1190,8 +1204,7 @@
 		  
 							<p:column headerText="Value (if applicable)" style="width: 12%;">  
 								<p:selectOneMenu value="#{riskFactors.selectedRange}" effect="fold"
-																rendered="${not empty riskFactors.rangeValues}"
-																disabled="#{riskFactors.display}">  
+																>  
 									<p:ajax listener="#{sPTBean.selectListener}" update="riskFactors :form:acc:output" />
 									<f:selectItems value="#{riskFactors.rangeValues}" var="ranges"/>
 								</p:selectOneMenu>  

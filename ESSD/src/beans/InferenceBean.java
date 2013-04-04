@@ -55,7 +55,8 @@ public class InferenceBean implements Serializable {
 	
 		//Iterate over the selected risk factors to be able to modify the network accordingly
 		for (RiskFactor rf : selectedRfs) {
-			nodeName = rf.getName().replace(' ', '_');				
+			nodeName = rf.getName().replace(' ', '_');		
+			System.out.println("NETWORKRANGE: "+rf.getSelectedRange());
 			net.setEvidence(nodeName, rf.getSelectedRange().replace(' ', '_'));	
 		}
 		
@@ -79,7 +80,7 @@ public class InferenceBean implements Serializable {
 		double [] typeValues = null;
 		nodeName = nodeName.replace(' ', '_');
 		stateName = stateName.replace(' ', '_');
-		System.out.println("WAAAAAAAAAAA " + net.getName());
+		//System.out.println("WAAAAAAAAAAA " + net.getName());
 		//Read current network from file
 		net.updateBeliefs();
 		
@@ -157,7 +158,7 @@ public class InferenceBean implements Serializable {
 		
 		String[] outcomeIds = net.getOutcomeIds(nodeName);
 		int idx;
-		System.out.println("LENGTH: "+outcomeIds.length);
+		//System.out.println("LENGTH: "+outcomeIds.length);
 		for (idx = 0; idx < outcomeIds.length; idx++) {
 			if (stateName.equals(outcomeIds[idx])){
 				break;
