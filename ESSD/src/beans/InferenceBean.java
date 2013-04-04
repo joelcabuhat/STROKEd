@@ -14,40 +14,51 @@ import model.StrokeType;
 import smile.Network;
 import smile.SMILEException;
 
+/**
+ * @author Arisa C. Ochavez
+ *
+ */
 @ManagedBean
 @SessionScoped
 public class InferenceBean implements Serializable {
 
 	/**
-	 * 
+	 * Global variables
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	/* Global Variables */
+	//To change the network to be read, change networkFile variable
+	//and align it with the database
 	private static final String networkFile = "ESSD_Files/System_Network/STROKEd_Network.xdsl";
 	private static final Network net = new Network();
 	public static final String with = "Present";
 	public static final String without = "Absent";
 	public static final String normal = "None";
 	
-	/*
-	 * Constructor
+	/**
+	 * Constructor 
 	 */
 	public InferenceBean () {
 		
 	}
 	
+	/**
+	 * Open the Bayesian network file 
+	 */
 	public static void start () {
 		net.readFile(networkFile);
 	}
 	
-	/*
-	 * Perform inference given the selected risk factors
+	/**
+	 * Perform Bayesian inference by setting selected risk factors with their respective range values as evidences
+	 * 
+	 * @param selectedRfs - list of observed risk factors as selected by the user
+	 * @param st - list of stroke types
+	 * @throws SMILEException
 	 */
 	public static void doInference (RiskFactor[] selectedRfs, List<StrokeType> st) throws SMILEException {
-		
 		String nodeName;
 		
+		//Clear all previous evidences - reset network to its initial state
 		net.clearAllEvidence();
 		
 		//Read current network from file
@@ -70,17 +81,27 @@ public class InferenceBean implements Serializable {
 			i.setProbability(typeValues[getIndex(net, "Stroke", i.getName().replace(' ', '_'))]);
 	}
 	
-	/*
-	 * Method for retrieving the probability value from the network
+	/**
+	 * Method for retrieving the probability value from the Bayesian network 
+	 * 
+	 * @param nodeName - name of the node where to retrieve the probability value from
+	 * @param stateName - name of the node's state where to retrieve the probability value from
+	 * @return probability value (double data type)
+	 * @throws SMILEException
 	 */
 	public static double getProbValue (String nodeName, String stateName) throws SMILEException {
 		
+		//Reset network to its initial state
 		net.clearAllEvidence();
 		
 		double [] typeValues = null;
 		nodeName = nodeName.replace(' ', '_');
 		stateName = stateName.replace(' ', '_');
+<<<<<<< HEAD
+		
+=======
 		//System.out.println("WAAAAAAAAAAA " + net.getName());
+>>>>>>> 66344b793f54b1ddd4903dfbf630566b6b242634
 		//Read current network from file
 		net.updateBeliefs();
 		
@@ -89,8 +110,14 @@ public class InferenceBean implements Serializable {
 		return typeValues[getIndex(net, nodeName, stateName)];
 	}
 	
-	/*
-	 * Method for adding a new node in the existing network
+	/**
+	 * Add (insert) new node to the Bayesian network
+	 * 
+	 * @param nodeName - name of the node to be added
+	 * @param parents - antecedent of the new node
+	 * @param children - precedent of the new node
+	 * @param states - state names (range values) of the new node
+	 * @throws SMILEException
 	 */
 	public static void addNode (String nodeName, List<String> parents, List<String> children, List<State> states) throws SMILEException {
 		
@@ -102,7 +129,6 @@ public class InferenceBean implements Serializable {
 		//Create new node
 		net.addNode(Network.NodeType.Cpt, nodeName);
 		
-		System.out.println("SIZE - " + states.size());
 		//Set states
 		double [] definition = new double [states.size()];
 		for (int i = 0; i < states.size(); i++) {
@@ -128,8 +154,12 @@ public class InferenceBean implements Serializable {
 		net.writeFile(networkFile);
 	}
 	
-	/*
-	 * Method for deleting a specified node from the network
+	/**
+	 * Remove the specified node from the Bayesian Network
+	 * 
+	 * @param nodeName - name of the node to be deleted
+	 * @return ret - list of connections to the deleted node
+	 * @throws SMILEException
 	 */
 	public static List<String> deleteNode (String nodeName) throws SMILEException {
 		
@@ -150,15 +180,23 @@ public class InferenceBean implements Serializable {
 		return ret;
 	}
 	
-	/*
+	/**
 	 * Method for getting the index of the state from the list of states of the node
+	 * 
+	 * @param net - pointer to the Bayesian network
+	 * @param nodeName - name of node that contains the state
+	 * @param stateName - name of specific state being looked up
+	 * @return idx - index of the specified state
 	 */
-	
 	private static int getIndex (Network net, String nodeName, String stateName) {
 		
 		String[] outcomeIds = net.getOutcomeIds(nodeName);
 		int idx;
+<<<<<<< HEAD
+		
+=======
 		//System.out.println("LENGTH: "+outcomeIds.length);
+>>>>>>> 66344b793f54b1ddd4903dfbf630566b6b242634
 		for (idx = 0; idx < outcomeIds.length; idx++) {
 			if (stateName.equals(outcomeIds[idx])){
 				break;
@@ -168,8 +206,12 @@ public class InferenceBean implements Serializable {
 		return idx;
 	}
 	
-	/*
+	/**
 	 * Method to retrieve parents of specified node
+	 * 
+	 * @param nodeName - name of node who's parents are being retrieved
+	 * @return ret2 - list of parents of the specified node
+	 * @throws SMILEException
 	 */
 	public static List<String> retrieveParents (String nodeName) throws SMILEException {
 		
@@ -188,8 +230,12 @@ public class InferenceBean implements Serializable {
 		return ret2;
 	}
 	
-	/*
+	/**
 	 * Method to retrieve children of specified node
+	 * 
+	 * @param nodeName - name of node who's children are being retrieved
+	 * @return ret2 - list of children of the specified node
+	 * @throws SMILEException
 	 */
 	public static List<String> retrieveChildren (String nodeName) throws SMILEException {
 		
@@ -208,8 +254,12 @@ public class InferenceBean implements Serializable {
 		return ret2;
 	}
 	
-	/*
+	/**
 	 * Method for retrieving the states of a specific node
+	 * 
+	 * @param nodeName - name of node who's states are being retrieved
+	 * @return ret2 - list of states of the specified node
+	 * @throws SMILEException
 	 */
 	public static List<String> retrieveStates (String nodeName) throws SMILEException {
 		
@@ -228,8 +278,11 @@ public class InferenceBean implements Serializable {
 		return ret2;
 	}
 	
-	/*
+	/**
 	 * Method for adding a state to a specified node
+	 * 
+	 * @param nodeName - name of node to be modified
+	 * @param stateName - name of state to be added to the node
 	 */
 	public static void addThisState (String nodeName, String stateName) {
 		//Read current network from file
@@ -241,10 +294,14 @@ public class InferenceBean implements Serializable {
 		net.writeFile(networkFile);
 	}
 	
-	/*
+	/**
 	 * Method for deleting a state from a specified node
+	 * 
+	 * @param nodeName - name of node to be modified
+	 * @param stateName - name of state to be removed from the node
 	 */
 	public static void delThisState (String nodeName, String stateName) {
+	
 		//Read current network from file
 		net.updateBeliefs();
 		
@@ -254,8 +311,12 @@ public class InferenceBean implements Serializable {
 		net.writeFile(networkFile);
 	}
 	
-	/*
+	/**
 	 * Method for retrieving the probabilities of the specified node
+	 * 
+	 * @param nodeName - name of node who's probabilities are being retrieved
+	 * @return ret - list of probabilities from the node's truth table
+	 * @throws SMILEException
 	 */
 	public static List<Double> retrieveProbs (String nodeName) throws SMILEException {
 		
@@ -271,8 +332,12 @@ public class InferenceBean implements Serializable {
 		return ret;
 	}
 	
-	/*
+	/**
 	 * Method for adding a connection from a node to another
+	 * 
+	 * @param parentName - name of parent to establish a connection from
+	 * @param childName - name of child to establish a connection to
+	 * @return false if adding an arc is successful, otherwise, true
 	 */
 	public static boolean addArc (String parentName, String childName) {
 		//Read current network from file
@@ -285,14 +350,18 @@ public class InferenceBean implements Serializable {
 			return true;	//error occurred - prompt user
 		}
 		
+		//Write changes to the network
 		net.updateBeliefs();
 		net.writeFile(networkFile);
 		
 		return false; //successful adding of connection
 	}
 	
-	/*
+	/**
 	 * Method for deleting the connection of 2 nodes
+	 * 
+	 * @param parentName - name of parent to remove a connection from
+	 * @param childName - name of child to remove a connection to
 	 */
 	public static void delArc (String parentName, String childName) {
 		//Read current network from file
@@ -304,15 +373,18 @@ public class InferenceBean implements Serializable {
 		net.writeFile(networkFile);
 	}
 	
-	/*
+	/**
 	 * Method for updating the node with new node name and set of probabilities
+	 * 
+	 * @param oldNodeName - old name of the node to be modified
+	 * @param newNodeName - new name for the node to be modified
+	 * @param definition - list of probabilities for the node's truth table
 	 */
 	public static void updateNode (String oldNodeName, String newNodeName, double [] definition) {
 		//Read current network from file
 		net.updateBeliefs();
 		
 		//Update node name
-		System.out.println("ID " + oldNodeName + " NEW " + newNodeName);
 		net.setNodeId(oldNodeName.replace(' ', '_'), newNodeName.replace(' ', '_'));
 		net.setNodeName(newNodeName.replace(' ', '_'), newNodeName.replace(' ', '_'));
 		
@@ -322,8 +394,11 @@ public class InferenceBean implements Serializable {
 		net.writeFile(networkFile);
 	}
 	
-	/*
+	/**
 	 * Method for updating the set of probabilities of a node
+	 * 
+	 * @param nodeName - name of node to be modified
+	 * @param definition - list of probabilities for the node's truth table
 	 */
 	public static void updateNodeProb (String nodeName, double [] definition) {
 		//Read current network from file

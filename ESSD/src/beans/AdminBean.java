@@ -22,16 +22,18 @@ import mapping.MapToClass;
 import model.User;
 import model.UserDataModel;
 
+/**
+ * @author Arisa C. Ochavez
+ *
+ */
 @ManagedBean
 @SessionScoped
 public class AdminBean implements Serializable {
 
 	/**
-	 * 
+	 * Global variables
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	
 	private User user, toDelete;
 	private User selectedUser = new User();
 	private List<User> userList;
@@ -39,66 +41,129 @@ public class AdminBean implements Serializable {
 	private List<User> filteredUsers;
 	private String confirmPass, newPass;
 	
+	/**
+	 * Constructor 
+	 */
 	public AdminBean () {
 		user = new User();
 	}
 
+	/**
+	 * Getter for variable that holds user information
+	 * @return user - information about the logged in user
+	 */
 	public User getUser() {
 		return user;
 	}
 
+	/**
+	 * Setter for variable that holds user information
+	 * @param user - information about the logged in user
+	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
 	
+	/**
+	 * Getter for the selected user
+	 * @return selectedUser - information of the user selected by the administrator
+	 */
 	public User getSelectedUser() {
 		return selectedUser;
 	}
 
+	/**
+	 * Setter for the selected user
+	 * @param selectedUser - information of the user selected by the administrator
+	 */
 	public void setSelectedUser(User selectedUser) {
 		this.selectedUser = selectedUser;
 	}
 
+	/**
+	 * Getter for the list of users
+	 * @return userList - list of users associated with the administrator
+	 */
 	public List<User> getUserList() {
 		return userList;
 	}
 
+	/**
+	 * Setter for the list of users
+	 * @param userList - list of users associated with the administrator
+	 */
 	public void setUserList(List<User> userList) {
 		this.userList = userList;
 	}
 
+	/**
+	 * Getter for the data model of the list of users
+	 * @return userListDataModel - data model for the list of users associated with the administrator
+	 */
 	public UserDataModel getUserListDataModel() {
 		return userListDataModel;
 	}
 
+	/**
+	 * Setter for the data model of the list of users
+	 * @param userListDataModel - data model for the list of users associated with the administrator
+	 */
 	public void setUserListDataModel(UserDataModel userListDataModel) {
 		this.userListDataModel = userListDataModel;
 	}
 
+	/**
+	 * Getter for filtered user list
+	 * @return filteredUsers - user list that was trimmed down depending on a particular criteria
+	 */
 	public List<User> getFilteredUsers() {
 		return filteredUsers;
 	}
 
+	/**
+	 * Setter for filtered user list
+	 * @param filteredUsers - user list that was trimmed down depending on a particular criteria
+	 */
 	public void setFilteredUsers(List<User> filteredUsers) {
 		this.filteredUsers = filteredUsers;
 	}
 	
+	/**
+	 * Getter for the password entered to confirm deletion of user
+	 * @return confirmPass - administrator password to confirm deletion of user
+	 */
 	public String getConfirmPass() {
 		return confirmPass;
 	}
 
+	
+	/**
+	 * Setter for the password entered to confirm deletion of user
+	 * @param confirmPass - administrator password to confirm deletion of user
+	 */
 	public void setConfirmPass(String confirmPass) {
 		this.confirmPass = confirmPass;
 	}
 
+	/**
+	 * Getter for the new password entered for the user
+	 * @return newPass - new password entered by the administrator
+	 */
 	public String getNewPass() {
 		return newPass;
 	}
 
+	/**
+	 * Setter for the new password entered for the user
+	 * @param newPass - new password entered by the administrator
+	 */
 	public void setNewPass(String newPass) {
 		this.newPass = newPass;
 	}
 
+	/**
+	 * Retrieve the list of users associated with the administrator from the database  
+	 */
 	public void populateUsers () {
 		userList = new ArrayList<User>();
 		
@@ -135,17 +200,21 @@ public class AdminBean implements Serializable {
 			}
 		}	
 		
-		userListDataModel = new UserDataModel(userList);
+		userListDataModel = new UserDataModel(userList); //Populate the data model with the list of users
 	}
 	
+	/**
+	 * Store the user information to be deleted in another variable 
+	 */
 	public void populateDeleteUser() {
 		toDelete = new User();
 		toDelete = toDelete.clone(selectedUser);
 	}
 	
+	/**
+	 * Add the new user entered by the administrator to the database 
+	 */
 	public void addUser () {
-		System.out.println("ADD USER!!!");
-		
 		BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 		FacesContext context = FacesContext.getCurrentInstance();
 		Connection conn = JdbcUtil.startConnection();
@@ -213,11 +282,10 @@ public class AdminBean implements Serializable {
 		}	
 	}
 	
+	/**
+	 * Enter the user information modified by the administrator in the database
+	 */
 	public void editUser () {
-		System.out.println("EDIT USER!!!" + selectedUser.getPassword());
-		System.out.println("NEW PASS" + newPass);
-		
-		
 		BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 		FacesContext context = FacesContext.getCurrentInstance();
 		Connection conn = JdbcUtil.startConnection();
@@ -293,9 +361,10 @@ public class AdminBean implements Serializable {
 		RequestContext.getCurrentInstance().execute("editUserInfoDialog.hide()");
 	}
 	
+	/**
+	 * Delete the user chosen by the administrator from the database
+	 */
 	public void deleteUser () {
-		System.out.println("DELETE USER!!! " + toDelete.getUsername());
-		
 		BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor();
 		FacesContext context = FacesContext.getCurrentInstance();
 		Connection conn = JdbcUtil.startConnection();
@@ -303,8 +372,6 @@ public class AdminBean implements Serializable {
 		ResultSet rs = null;
 		
 		try {
-			System.out.println("CONFIRMPASS - " + confirmPass);
-			System.out.println("ENCRYPT - " + toDelete.getPassword());
 			ps = conn.prepareStatement("SELECT user_id, password FROM user WHERE username = ?");
 				ps.setString(1, toDelete.getUsername());
 			rs = ps.executeQuery();
@@ -334,10 +401,12 @@ public class AdminBean implements Serializable {
 		}
 		
 		resetValues();
-		
 		RequestContext.getCurrentInstance().execute("deleteUserDialog.hide()");
 	}
 	
+	/**
+	 * Reset the variables after deletion or modification then refresh the list of users for any changes
+	 */
 	private void resetValues() {
 		newPass = "";
 		confirmPass = "";

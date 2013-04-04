@@ -8,24 +8,30 @@ import javax.faces.model.ListDataModel;
 
 import org.primefaces.model.SelectableDataModel;
 
+/**
+ * @author Arisa C. Ochavez
+ *
+ */
 @ManagedBean
 public class RiskFactorDataModel extends ListDataModel<RiskFactor> implements SelectableDataModel<RiskFactor>, Serializable {
 
 	/**
-	 * 
+	 * Global variables
 	 */
 	private static final long serialVersionUID = 1L;
 
-	/*
-	 * Constructor
+	/**
+	 * Constructor 
 	 */
 	public RiskFactorDataModel () {
 		
 	}
   
-	/*
-	 * Constructor with parameter data
-	 */
+	/**
+	 * Constructor
+	 * 
+     * @param data - list of risk factors
+     */
     public RiskFactorDataModel(List<RiskFactor> data) {  
         super(data);  
     }  

@@ -17,7 +17,6 @@ import javax.faces.event.AjaxBehaviorEvent;
 
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
-import org.primefaces.event.ToggleEvent;
 import org.primefaces.event.UnselectEvent;
 
 import utilities.JdbcUtil;
@@ -27,16 +26,18 @@ import model.RiskFactor;
 import model.RiskFactorDataModel;
 import model.StrokeType;
 
+/**
+ * @author Arisa C. Ochavez
+ *
+ */
 @ManagedBean
 @SessionScoped
 public class SPTBean implements Serializable {
 	
 	/**
-	 * 
+	 * Global variables
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	/* Global Variables */
 	protected RiskFactor selectedRf;
 	private List<RiskFactor> filteredRfs;
 	protected static RiskFactor [] recSelected;
@@ -45,113 +46,128 @@ public class SPTBean implements Serializable {
 	protected static List<StrokeType> st;
 	protected static RiskFactor [] selectedRfs;
 	
-	/*
-	 * Constructor
+	/**
+	 * Constructor 
 	 */
 	public SPTBean () {
 		
 	}
 	
-	/*
+	/**
 	 * Getter for selected risk factor
+	 * @return selectedRf - risk factor chosen by the user
 	 */
 	public RiskFactor getSelectedRf() {
 		return selectedRf;
 	}
 
-	/*
+	/**
 	 * Setter for selected risk factor
+	 * @param selectedRf - risk factor chosen by the user
 	 */
 	public void setSelectedRf(RiskFactor selectedRf) {
 		this.selectedRf = selectedRf;
 	}
 
-	/*
+	/**
 	 * Getter for the list containing the risk factors in the network
+	 * @return rf - list of risk factors
 	 */
 	public List<RiskFactor> getRf() {
 		return rf;
 	}
 
-	/*
+	/**
 	 * Setter for the list containing the risk factors in the network
+	 * @param rf - list of risk factors
 	 */
 	public void setRf(List<RiskFactor> rf) {
 		SPTBean.rf = rf;
 	}
 
-	/*
+	/**
 	 * Getter for the filtered risk factors
+	 * @return filteredRfs - list of risk factors trimmed down according to parameter
 	 */
 	public List<RiskFactor> getFilteredRfs() {
 		return filteredRfs;
 	}
 
-	/*
+	/**
 	 * Setter for the filtered risk factors
+	 * @param filteredRfs - list of risk factors trimmed down according to parameter
 	 */
 	public void setFilteredRfs(List<RiskFactor> filteredRfs) {
 		this.filteredRfs = filteredRfs;
 	}
 
-	/*
+	/**
 	 * Getter for the list containing the different stroke types
+	 * @return st - list of stroke types
 	 */
 	public List<StrokeType> getSt() {
 		return st;
 	}
 
-	/*
+	/**
 	 * Setter for the list containing the different stroke types
+	 * @param st - list of stroke types
 	 */
 	public void setSt(List<StrokeType> st) {
 		SPTBean.st = st;
 	}
 
-	/*
+	/**
 	 * Getter for the array containing the selected risk factors from the data table
+	 * @return selectedRfs - list of observed risk factors of the patient
 	 */
 	public RiskFactor [] getSelectedRfs() {
 		return selectedRfs;
 	}
 
-	/*
+	/**
 	 * Setter for the array containing the selected risk factors from the data table
+	 * @param selectedRfs - list of observed risk factors of the patient
 	 */
 	public void setSelectedRfs(RiskFactor [] selectedRfs) {
 		SPTBean.selectedRfs = selectedRfs;
 	}
 
-	/*
+	/**
 	 * Getter for copy of selected risk factors before select/deselect
+	 * @return recSelected - original list of observed risk factors before another select/deselect action
 	 */
 	public RiskFactor[] getRecSelected() {
 		return recSelected;
 	}
 
-	/*
+	/**
 	 * Setter for copy of selected risk factors before select/deselect
+	 * @param recSelected - original list of observed risk factors before another select/deselect action
 	 */
 	public static void setRecSelected(RiskFactor[] recSelected) {
 		SPTBean.recSelected = recSelected;
 	}
 
-	/*
-	 * Getter for the data model of the selected risk factors
+	/**
+	 * Getter for the data model of the risk factors
+	 * @return rfDataModel - data model of the list of risk factors
 	 */
 	public RiskFactorDataModel getRfDataModel() {
 		return rfDataModel;
 	}
 
-	/*
-	 * Setter for the data model of the selected risk factors
+	/**
+	 * Setter for the data model of the risk factors
+	 * @param rfDataModel - data model of the list of risk factors
 	 */
 	public void setRfDataModel(RiskFactorDataModel rfDataModel) {
 		SPTBean.rfDataModel = rfDataModel;
 	}
 
-	/*
+	/**
 	 * Method for firing action upon selecting a risk factor
+	 * @param se - event indicating a select action by the user
 	 */
 	public void selectListener(SelectEvent se) {
 		for (RiskFactor i: selectedRfs) {
@@ -159,25 +175,26 @@ public class SPTBean implements Serializable {
 				i.setSelectedRange(i.getRangeValues().get(0));
 		}
 		updateData(true);
-		//System.out.println("Selected: "+selectedRfs.length);
 	}
 	
-	/*
+	/**
 	 * Method for firing action upon changing the value of a risk factor
+	 * @param se - event indicating the change in value of the dropdown
 	 */
 	public void selectListener(AjaxBehaviorEvent se) {
 		updateData(true);
 		
 	}
 	
-	/*
+	/**
 	 * Method for firing action upon deselecting a risk factor
+	 * @param se - event indicating unselect action by the user
 	 */
 	public void unselectListener(UnselectEvent se) {
 		updateData(false);
 	}
 	
-	/*
+	/**
 	 * Method to update probabilities after adding a node
 	 */
 	public static void addNodeUpdate () {
@@ -185,9 +202,9 @@ public class SPTBean implements Serializable {
 		InferenceBean.doInference(selectedRfs, st);
 	}
 	
-	/*
-	 * Method to remove deleted node in selected risk factors
-	 * (if ever it is included)
+	/**
+	 * Method to remove deleted node in selected risk factors (if ever it was included)
+	 * @param deletedNode - name of node to be removed from the list
 	 */
 	public static void removeDeleted (String deletedNode) {
 		
@@ -211,12 +228,10 @@ public class SPTBean implements Serializable {
 		InferenceBean.doInference(selectedRfs, st);
 	}
 	
-	/*
-	 * Method to initialize datatables
+	/**
+	 * Method to initialize the prediction tool
 	 */
 	public static void start () {
-		
-		System.out.println("ENTER SPT");
 		rf = new ArrayList<RiskFactor>();
 		st = new ArrayList<StrokeType>();
 		populateSPT(rf, st);
@@ -224,7 +239,7 @@ public class SPTBean implements Serializable {
 		RequestContext.getCurrentInstance().execute("loading.hide()");
 	}
 	
-	/*
+	/**
 	 * Method to call to reset necessary values upon log out
 	 */
 	public static void resetSPT () {
@@ -232,9 +247,10 @@ public class SPTBean implements Serializable {
 		recSelected = null;
 	}
 
-	/*
-	 * Method that retrieves all the risk factors from the database
-	 * and the different stroke types
+	/**
+	 * Method that retrieves all the risk factors from the database and the different stroke types
+	 * @param list - list of risk factors
+	 * @param list2 - list of stroke types
 	 */
 	private static void populateSPT (List<RiskFactor> list, List<StrokeType> list2) {
 		Connection conn = JdbcUtil.startConnection();
@@ -242,7 +258,7 @@ public class SPTBean implements Serializable {
 		ResultSet rs = null;
 		
 		try {
-			//get ALL Risk Factors
+			//Get ALL Risk Factors
 			ps = conn.prepareStatement("SELECT * FROM risk_factors");
 			rs = ps.executeQuery();
 			
@@ -251,7 +267,7 @@ public class SPTBean implements Serializable {
 				list.add(MapToClass.mapRf(rf, rs));
 			}
 			
-			//get Stroke Types
+			//Get Stroke Types
 			ps = conn.prepareStatement("SELECT * FROM stroke_types");
 			rs = ps.executeQuery();
 			
@@ -278,12 +294,12 @@ public class SPTBean implements Serializable {
 		}
 	}
 	
-	/*
+	/**
 	 * Method for updating the probabilities of the risk factors and the stroke types
-	 * if action = true --> perform update appropriate for selecting a risk factor
-	 * else if action = false --> perform update appropriate for deselecting a risk factor 
+	 * @param action - true if update is needed to be performed for selecting a risk factor and false if it is for deselecting a risk factor
 	 */
 	public static void updateData (boolean action) {
+		//Do Bayesian inference
 		InferenceBean.doInference(selectedRfs, st);
 		
 		if (action) {

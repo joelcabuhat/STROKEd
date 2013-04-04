@@ -29,47 +29,47 @@ import model.RiskFactorDataModel;
 import model.State;
 import model.StrokeType;
 
+/**
+ * @author Arisa C. Ochavez
+ *
+ */
 @ManagedBean
 @SessionScoped
 public class SKDBean implements Serializable {
 
 	/**
-	 * 
+	 * Global variables
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	/* Global Variables */
 	private static final String disease = "Stroke";
+	private static List<RiskFactor> rfOfUser;
+	private static RiskFactorDataModel rfDataModel;
+	private List<RiskFactor> filteredRfs;
 	
-		/* Populating the datable */
-		private static List<RiskFactor> rfOfUser;
-		private static RiskFactorDataModel rfDataModel;
-		private List<RiskFactor> filteredRfs;
-	
-		/* Adding new risk factor */
-		private String newNodeName, newNodeDescrip, newNodeHist, newNodeSS, newNodePE, newNodeLE, newNodeGM, newNodeSM;
+	/* Adding new risk factor */
+	private String newNodeName, newNodeDescrip, newNodeHist, newNodeSS, newNodePE, newNodeLE, newNodeGM, newNodeSM;
 		
-		/* Editing/Deleting risk factors and stroke*/
-		private RiskFactor selectedRf = new RiskFactor();
-		private State selectedState, stateToEdit;
-		private String dummy, dummy2;
-		private List<String> origParents, origChildren, origStates;
-		private DualListModel<String> parents;
-		private DualListModel<String> children;
-		private List<State> states, statesForEdit;
-		private String newStateName;
-		private double newStateProb;
-		private List<StrokeType> strokeTypes, origTypes;
-		private StrokeType selectedType;
-		private String newTypeName, newTypeDescrip;
+	/* Editing/Deleting risk factors and stroke*/
+	private RiskFactor selectedRf = new RiskFactor();
+	private State selectedState, stateToEdit;
+	private String dummy, dummy2;
+	private List<String> origParents, origChildren, origStates;
+	private DualListModel<String> parents;
+	private DualListModel<String> children;
+	private List<State> states, statesForEdit;
+	private String newStateName;
+	private double newStateProb;
+	private List<StrokeType> strokeTypes, origTypes;
+	private StrokeType selectedType;
+	private String newTypeName, newTypeDescrip;
 		
-		/* GUI Manipulation and DynaForm */
-		private Boolean editProb, editSave, editCancel, editPick, editConn, editStatesRow, editStates;
-		private int startIdx, columnEndIdx, outputs;
-		private DynaFormModel rfModel = new DynaFormModel();
-		private DynaFormModel strokeModel = new DynaFormModel();
+	/* GUI Manipulation and DynaForm */
+	private Boolean editProb, editSave, editCancel, editPick, editConn, editStatesRow, editStates;
+	private int startIdx, columnEndIdx, outputs;
+	private DynaFormModel rfModel = new DynaFormModel();
+	private DynaFormModel strokeModel = new DynaFormModel();
 	
-	/*
+	/**
 	 * Constructor
 	 */
 	public SKDBean () {
@@ -81,486 +81,552 @@ public class SKDBean implements Serializable {
 		initStates();
 	}
 	
-	/*
-	 * Getter for the list containing the risk factors in the network
-	 * associated with the logged in user
+	/**
+	 * Getter for the list containing the risk factors in the network associated with the logged in user
+	 * @return rfOfUser - list of risk factors
 	 */
 	public List<RiskFactor> getRfOfUser() {
 		return rfOfUser;
 	}
 
-	/*
-	 * Setter for the list containing the risk factors in the network
-	 * associated with the logged in user
+	/**
+	 * Setter for the list containing the risk factors in the network associated with the logged in user
+	 * @param rfOfUser - list of risk factors
 	 */
 	public void setRfOfUser(List<RiskFactor> rfOfUser) {
 		SKDBean.rfOfUser = rfOfUser;
 	}
 	
-	/*
+	/**
 	 * Getter for the data model of the selected risk factors associated with logged in user
+	 * @return rfDataModel - data model for the list of risk factors
 	 */
 	public RiskFactorDataModel getRfDataModel() {
 		return rfDataModel;
 	}
 
-	/*
+	/**
 	 * Setter for the data model of the selected risk factors associated with logged in user
+	 * @param rfDataModel - data model for the list of risk factors
 	 */
 	public void setRfDataModel(RiskFactorDataModel rfDataModel) {
 		SKDBean.rfDataModel = rfDataModel;
 	}
 	
-	/*
+	/**
 	 * Getter for selected risk factor
+	 * @return selectedRf - risk factor chosen by the user
 	 */
 	public RiskFactor getSelectedRf() {
 		return selectedRf;
 	}
 
-	/*
+	/**
 	 * Setter for selected risk factor
+	 * @param selectedRf - risk factor chosen by the user
 	 */
 	public void setSelectedRf(RiskFactor selectedRf) {
 		this.selectedRf = selectedRf;
 	}
 	
-	/*
+	/**
 	 * Getter for selected state
+	 * @return selectedState - state of the risk factor chosen by the user
 	 */
 	public State getSelectedState() {
 		return selectedState;
 	}
 
-	/*
+	/**
 	 * Setter for selected state
+	 * @param selectedState - state of the risk factor chosen by the user
 	 */
 	public void setSelectedState(State selectedState) {
 		this.selectedState = selectedState;
 	}
 
-	/*
+	/**
 	 * Getter for control for probability tab
+	 * @return editProb - true if probability tab should be displayed, otherwise, false
 	 */
 	public Boolean getEditProb() {
 		return editProb;
 	}
 
-	/*
+	/**
 	 * Setter for control for probability tab
+	 * @param editProb - true if probability tab should be displayed, otherwise, false
 	 */
 	public void setEditProb(Boolean editProb) {
 		this.editProb = editProb;
 	}
 
-	/*
+	/**
 	 * Getter for control for save button
+	 * @return editSave - true if save button should be displayed, otherwise, false
 	 */
 	public Boolean getEditSave() {
 		return editSave;
 	}
 
-	/*
+	/**
 	 * Setter for control for save button
+	 * @param editSave - true if save button should be displayed, otherwise, false
 	 */
 	public void setEditSave(Boolean editSave) {
 		this.editSave = editSave;
 	}
 
-	/*
+	/**
 	 * Getter for control for cancel button
+	 * @return editCancel - true if cancel button should be displayed, otherwise, false
 	 */
 	public Boolean getEditCancel() {
 		return editCancel;
 	}
 
-	/*
+	/**
 	 * Setter for control for cancel button
+	 * @param editCancel - true if cancel button should be displayed, otherwise, false
 	 */
 	public void setEditCancel(Boolean editCancel) {
 		this.editCancel = editCancel;
 	}
 
-	/*
+	/**
 	 * Getter for control for save changes in picklist
+	 * @return editPick - true if pick list save button should be displayed, otherwise, false
 	 */
 	public Boolean getEditPick() {
 		return editPick;
 	}
 
-	/*
+	/**
 	 * Setter for control for save changes in picklist
+	 * @param editPick - true if pick list save button should be displayed, otherwise, false
 	 */
 	public void setEditPick(Boolean editPick) {
 		this.editPick = editPick;
 	}
 
-	/*
+	/**
 	 * Getter for control for states tab
+	 * @return editStates - true if states tab should be displayed, otherwise, false
 	 */
 	public Boolean getEditStates() {
 		return editStates;
 	}
 
-	/*
+	/**
 	 * Setter for control for states tab
+	 * @param editStates - true if states tab should be displayed, otherwise, false
 	 */
 	public void setEditStates(Boolean editStates) {
 		this.editStates = editStates;
 	}
 
-	/*
+	/**
 	 * Getter for control for save changes in states
+	 * @return editStatesRow - true if states tab's save button should be displayed, otherwise, false
 	 */
 	public Boolean getEditStatesRow() {
 		return editStatesRow;
 	}
 
-	/*
+	/**
 	 * Setter for control for save changes in states
+	 * @param editStatesRow - true if states tab's save button should be displayed, otherwise, false
 	 */
 	public void setEditStatesRow(Boolean editStatesRow) {
 		this.editStatesRow = editStatesRow;
 	}
 
-	/*
+	/**
 	 * Getter for control for connections tab
+	 * @return editConn - true if connections tab should be displayed, otherwise, false
 	 */
 	public Boolean getEditConn() {
 		return editConn;
 	}
 
-	/*
+	/**
 	 * Setter for control for connections tab
+	 * @param editConn - true if connections tab should be displayed, otherwise, false
 	 */
 	public void setEditConn(Boolean editConn) {
 		this.editConn = editConn;
 	}
 
-	/*
+	/**
 	 * Getter for the filtered risk factors
+	 * @return filteredRfs - list of risk factors filtered according to a parameter
 	 */
 	public List<RiskFactor> getFilteredRfs() {
 		return filteredRfs;
 	}
 
-	/*
+	/**
 	 * Setter for the filtered risk factors
+	 * @param filteredRfs - list of risk factors filtered according to a parameter
 	 */
 	public void setFilteredRfs(List<RiskFactor> filteredRfs) {
 		this.filteredRfs = filteredRfs;
 	}
 	
-	/*
+	/**
 	 * Getter for the list containing names of the probable parent risk factors
+	 * @return parents - list of possible parents for the risk factor
 	 */
 	public DualListModel<String> getParents() {
 		return parents;
 	}
 
-	/*
+	/**
 	 * Setter for the list containing names of the probable parent risk factors
+	 * @param parents - list of possible parents for the risk factor
 	 */
 	public void setParents(DualListModel<String> parents) {
 		this.parents = parents;
 	}
 
-	/*
+	/**
 	 * Getter for the list containing names of the probable child risk factors
+	 * @return children - list of possible children for the risk factor
 	 */
 	public DualListModel<String> getChildren() {
 		return children;
 	}
 
-	/*
+	/**
 	 * Setter for the list containing names of the probable child risk factors
+	 * @param children - list of possible children for the risk factor
 	 */
 	public void setChildren(DualListModel<String> children) {
 		this.children = children;
 	}
 
-	/*
+	/**
 	 * Getter for the list of states of the new node
+	 * @return states - list of states
 	 */
 	public List<State> getStates() {
 		return states;
 	}
 
-	/*
+	/**
 	 * Setter for the list of states of the new node
+	 * @param states - list of states
 	 */
 	public void setStates(List<State> states) {
 		this.states = states;
 	}
 
-	/*
+	/**
 	 * Getter for list of states of selected risk factor for editing
+	 * @return statesForEdit - list of states for editing
 	 */
 	public List<State> getStatesForEdit() {
 		return statesForEdit;
 	}
 
-	/*
+	/**
 	 * Setter for list of states of selected risk factor for editing
+	 * @param statesForEdit - list of states for editing
 	 */
 	public void setStatesForEdit(List<State> statesForEdit) {
 		this.statesForEdit = statesForEdit;
 	}
 
-	/*
-	 * Getter for state for editing of selected risk factor
+	/**
+	 * Getter for state of selected risk factor to be modified
+	 * @return stateToEdit - state to be edited
 	 */
 	public State getStateToEdit() {
 		return stateToEdit;
 	}
 
-	/*
-	 * Setter for state for editing of selected risk factor
+	/**
+	 * Setter for state of selected risk factor to be modified
+	 * @param stateToEdit - state to be edited
 	 */
 	public void setStateToEdit(State stateToEdit) {
 		this.stateToEdit = stateToEdit;
 	}
 
-	/*
+	/**
 	 * Getter for new state's name
+	 * @return newStateName - name of the state to be added
 	 */
 	public String getNewStateName() {
 		return newStateName;
 	}
 
-	/*
+	/**
 	 * Setter for new state's name
+	 * @param newStateName - name of the state to be added
 	 */
 	public void setNewStateName(String newStateName) {
 		this.newStateName = newStateName;
 	}
 
-	/*
+	/**
 	 * Getter for new state's probability
+	 * @return newStateProb - probability value of state to be added
 	 */
 	public double getNewStateProb() {
 		return newStateProb;
 	}
 
-	/*
+	/**
 	 * Setter for new state's probability
+	 * @param newStateProb - probability value of state to be added
 	 */
 	public void setNewStateProb(double newStateProb) {
 		this.newStateProb = newStateProb;
 	}
 
-	/*
+	/**
 	 * Getter for new node name
+	 * @return newNodeName - name of the new node to be added
 	 */
 	public String getNewNodeName() {
 		return newNodeName;
 	}
 
-	/*
+	/**
 	 * Setter for new node name
+	 * @param newNodeName - name of the new node to be added
 	 */
 	public void setNewNodeName(String newNodeName) {
 		this.newNodeName = newNodeName;
 	}
 
-	/*
+	/**
 	 * Getter for new node description
+	 * @return newNodeDescrip - description for new node to be added
 	 */
 	public String getNewNodeDescrip() {
 		return newNodeDescrip;
 	}
 
-	/*
+	/**
 	 * Setter for new node description
+	 * @param newNodeDescrip - description for new node to be added
 	 */
 	public void setNewNodeDescrip(String newNodeDescrip) {
 		this.newNodeDescrip = newNodeDescrip;
 	}
 
-	/*
+	/**
 	 * Getter for new node history
+	 * @return newNodeHistory - origin of the new node to be added
 	 */
 	public String getNewNodeHist() {
 		return newNodeHist;
 	}
 
-	/*
+	/**
 	 * Setter for new node history
+	 * @param newNodeHistory - origin of the new node to be added
 	 */
 	public void setNewNodeHist(String newNodeHist) {
 		this.newNodeHist = newNodeHist;
 	}
 
-	/*
+	/**
 	 * Getter for new node signs and symptoms
+	 * @return newNodeSS - indicators of new node to be added
 	 */
 	public String getNewNodeSS() {
 		return newNodeSS;
 	}
 
-	/*
+	/**
 	 * Setter for new node signs and symptoms
+	 * @param newNodeSS - indicators of new node to be added
 	 */
 	public void setNewNodeSS(String newNodeSS) {
 		this.newNodeSS = newNodeSS;
 	}
 
-	/*
+	/**
 	 * Getter for new node physical examinations
+	 * @return newNodePE - physical examinations associated to new node to be added
 	 */
 	public String getNewNodePE() {
 		return newNodePE;
 	}
 
-	/*
+	/**
 	 * Setter for new node physical examinations
+	 * @param newNodePE - physical examinations associated to new node to be added
 	 */
 	public void setNewNodePE(String newNodePE) {
 		this.newNodePE = newNodePE;
 	}
 
-	/*
+	/**
 	 * Getter for new node laboratory examinations
+	 * @return newNodeLE - laboratory examinations for new node to be added
 	 */
 	public String getNewNodeLE() {
 		return newNodeLE;
 	}
 
-	/*
+	/**
 	 * Setter for new node laboratory examinations
+	 * @param newNodeLE - laboratory examinations for new node to be added
 	 */
 	public void setNewNodeLE(String newNodeLE) {
 		this.newNodeLE = newNodeLE;
 	}
 
-	/*
+	/**
 	 * Getter for new node general measures
+	 * @return newNodeGM - general measures to be taken for the new node to added
 	 */
 	public String getNewNodeGM() {
 		return newNodeGM;
 	}
 
-	/*
+	/**
 	 * Setter for new node general measures
+	 * @param newNodeGM - general measures to be taken for the new node to added
 	 */
 	public void setNewNodeGM(String newNodeGM) {
 		this.newNodeGM = newNodeGM;
 	}
 
-	/*
+	/**
 	 * Getter for new node specific measures
+	 * @return newNodeSM - specific measures to be taken for the new node to be added
 	 */
 	public String getNewNodeSM() {
 		return newNodeSM;
 	}
 
-	/*
+	/**
 	 * Setter for new node specific measures
+	 * @param newNodeSM - specific measures to be taken for the new node to be added
 	 */
 	public void setNewNodeSM(String newNodeSM) {
 		this.newNodeSM = newNodeSM;
 	}
 	
-	/*
+	/**
 	 * Getter for the dynamic form model for risk factor
+	 * @return rfModel - risk factor model for a dynamic form 
 	 */
 	public DynaFormModel getRfModel() {
 		return rfModel;
 	}
 
-	/*
+	/**
 	 * Setter for the dynamic form model for risk factor
+	 * @param rfModel - risk factor model for a dynamic form 
 	 */
 	public void setRfModel(DynaFormModel rfModel) {
 		this.rfModel = rfModel;
 	}
 
-	/*
+	/**
 	 * Getter for the dynamic form model for stroke
+	 * @return strokeModel - stroke model for a dynamic form
 	 */
 	public DynaFormModel getStrokeModel() {
 		return strokeModel;
 	}
 
-	/*
+	/**
 	 * Setter for the dynamic form model for stroke
+	 * @param strokeModel - stroke model for a dynamic form
 	 */
 	public void setStrokeModel(DynaFormModel strokeModel) {
 		this.strokeModel = strokeModel;
 	}
 
-	/*
+	/**
 	 * Getter for the set of types of stroke
+	 * @return strokeTypes - list of stroke types
 	 */
 	public List<StrokeType> getStrokeTypes() {
 		return strokeTypes;
 	}
 
-	/*
+	/**
 	 * Setter for the set of types of stroke
+	 * @param strokeTypes - list of stroke types
 	 */
 	public void setStrokeTypes(List<StrokeType> strokeTypes) {
 		this.strokeTypes = strokeTypes;
 	}
 
-	/*
+	/**
 	 * Getter for the selected type of stroke
+	 * @return selectedType - type of stroke chosen by user
 	 */
 	public StrokeType getSelectedType() {
 		return selectedType;
 	}
 
-	/*
+	/**
 	 * Setter for the selected type of stroke
+	 * @param selectedType - type of stroke chosen by user
 	 */
 	public void setSelectedType(StrokeType selectedType) {
 		this.selectedType = selectedType;
 	}
 
-	/*
+	/**
 	 * Getter for the new type for stroke
+	 * @return newTypeName - new stroke type defined by the user
 	 */
 	public String getNewTypeName() {
 		return newTypeName;
 	}
 
-	/*
+	/**
 	 * Setter for the new type for stroke
+	 * @param newTypeName - new stroke type defined by the user
 	 */
 	public void setNewTypeName(String newTypeName) {
 		this.newTypeName = newTypeName;
 	}
 
-	/*
+	/**
 	 * Getter for the description of new type for stroke
+	 * @return newTypeDescrip - definition of new stroke type added by the user
 	 */
 	public String getNewTypeDescrip() {
 		return newTypeDescrip;
 	}
 
-	/*
+	/**
 	 * Setter for the description of new type for stroke
+	 * @param newTypeDescrip - definition of new stroke type added by the user
 	 */
 	public void setNewTypeDescrip(String newTypeDescrip) {
 		this.newTypeDescrip = newTypeDescrip;
 	}
 	
-	/*
+	/**
 	 * Getter for 2nd dummy variable
+	 * @return dummy2 - temporary string holder
 	 */
 	public String getDummy2() {
 		return dummy2;
 	}
 
-	/*
+	/**
 	 * Setter for 2nd dummy variable
+	 * @param dummy2 - temporary string holder
 	 */
 	public void setDummy2(String dummy2) {
 		this.dummy2 = dummy2;
 	}
 
-	/*
-	 * Method to initialize datatables
+	/**
+	 * Method to initialize the network tool 
 	 */
 	public static void start () {
 		rfOfUser = new ArrayList<RiskFactor>();
@@ -569,24 +635,25 @@ public class SKDBean implements Serializable {
 	}
 	
 	/************Adding New Risk Factor Methods*************/	
-	/*
-	 * Method to update the list of available risk factors once one is selected as parent
-	 * in Add New Risk Factor
+	
+	/**
+	 * Method to update the list of available risk factors once one is selected as parent in Add New Risk Factor module
+	 * @param event - event fired once parent pick list is modified
 	 */
 	public void onParentTransfer (TransferEvent event) {
 		modifySource(event, children);
 	}
 	
-	/*
-	 * Method to update the list of available risk factors once one is selected as child
-	 * in Add New Risk Factor
+	/**
+	 * Method to update the list of available risk factors once one is selected as child in Add New Risk Factor module
+	 * @param event - event fired once child pick list is modified
 	 */
 	public void onChildrenTransfer (TransferEvent event) {
 		modifySource(event, parents);
 	}
 	
-	/*
-	 * Method to accept or reject adding of new node
+	/**
+	 * Method to accept or reject adding of new node to the network
 	 */
 	public void saveNewNode () {
 		
@@ -690,6 +757,7 @@ public class SKDBean implements Serializable {
 		start();
 		InferenceBean.start();
 		SPTBean.start();
+		PatientInfoBean.start();
 		SPTBean.addNodeUpdate();
 		
 		//Close dialog box on successful adding of node
@@ -698,7 +766,7 @@ public class SKDBean implements Serializable {
 	}
 	
 	/************Editing Risk Factor and Stroke Methods*************/
-	/*
+	/**
 	 * Method to populate the attributes of the selected risk factor for editing
 	 */
 	public void populateEdit () {
@@ -732,7 +800,7 @@ public class SKDBean implements Serializable {
 		noChangesMade();
 	}
 	
-	/*
+	/**
 	 * Method to populate the attributes of stroke for editing
 	 */
 	public void populateStrokeEdit () {
@@ -791,8 +859,8 @@ public class SKDBean implements Serializable {
 		noChangesMade();
 	}
 	
-	/*
-	 * Method that adds the new state in the existing set of states in Add new risk factor
+	/**
+	 * Method that adds the new state in the existing set of states in Add New Risk Factor module 
 	 */
 	public void addState () {
 		addNewState(newStateName, newStateProb, states);
@@ -800,8 +868,8 @@ public class SKDBean implements Serializable {
 		newStateProb = 0.0;
 	}
 	
-	/*
-	 * Method that adds the new state in the existing set of states in Edit risk factor
+	/**
+	 * Method that adds the new state in the existing set of states in Edit Risk Factor module
 	 */
 	public void addStateEdit () {
 		addNewState(dummy2, 0.0, statesForEdit);
@@ -809,7 +877,7 @@ public class SKDBean implements Serializable {
 		changesMadeStates();
 	}
 	
-	/*
+	/**
 	 * Method that adds new type in existing set of types for stroke
 	 */
 	public void addType () {
@@ -830,6 +898,7 @@ public class SKDBean implements Serializable {
 		//Add new type to stroke
 		strokeTypes.add(new StrokeType(newTypeName, newTypeDescrip));
 		
+		//Reset values
 		newTypeName = "";
 		newTypeDescrip = "";
 		
@@ -837,22 +906,22 @@ public class SKDBean implements Serializable {
 		changesMadeStates();
 	}
 	
-	/*
-	 * Method that deletes a state in the existing set of states in Add new risk factor
+	/**
+	 * Method that deletes a state in the existing set of states in Add New Risk Factor module
 	 */
 	public void delState () {
 		delSomeState(selectedState.getStateName(), states);
 	}
 	
-	/*
-	 * Method that deletes a state in the existing set of states in Edit risk factor
+	/**
+	 * Method that deletes a state in the existing set of states in Edit Risk Factor module
 	 */
 	public void delStateEdit () {
 		delSomeState(stateToEdit.getStateName(), statesForEdit);
 		changesMadeStates();
 	}
 	
-	/*
+	/**
 	 * Method that deletes type in existing set of types for stroke
 	 */
 	public void delType () {
@@ -867,32 +936,33 @@ public class SKDBean implements Serializable {
 		changesMadeStates();
 	}
 	
-	/*
-	 * Method to update the list of available risk factors once one is selected as parent
-	 * in Edit Risk Factor and Stroke Information
+	/**
+	 * Method to update the list of available risk factors once one is selected as parent in Edit Risk Factor and Stroke Information modules
+	 * @param event - event fired when parent pick list is modified
 	 */
 	public void onEditParentTransfer (TransferEvent event) {
 		modifySource(event, children);
 		changesMadeConn();
 	}
 	
-	/*
-	 * Method to update the list of available risk factors once one is selected as child
-	 * in Edit Risk Factor and Stroke Information
+	/**
+	 * Method to update the list of available risk factors once one is selected as parent in Edit Risk Factor and Stroke Information modules
+	 * @param event - event fired when child pick list is modified
 	 */
 	public void onEditChildrenTransfer (TransferEvent event) {
 		modifySource(event, parents);		
 		changesMadeConn();
 	}
 	
-	/*
+	/**
 	 * Method to update UI for changes made in the editable datatable
+	 * @param event - event fired when datatable row is modified
 	 */
 	public void rowEdit (RowEditEvent event) {
 		changesMadeStates();
 	}
 	
-	/*
+	/**
 	 * Method to save changes in states in editing a risk factor
 	 */
 	public void saveChangesStates () {
@@ -949,8 +1019,8 @@ public class SKDBean implements Serializable {
 		populateEdit();
 	}
 	
-	/*
-	 * Method to save changes in types in stroke
+	/**
+	 * Method to save changes in types in editing stroke information
 	 */
 	public void saveChangesType () {
 		List<StrokeType> temp = new ArrayList<StrokeType>();
@@ -1009,7 +1079,7 @@ public class SKDBean implements Serializable {
 		populateStrokeEdit();
 	}
 	
-	/*
+	/**
 	 * Method for saving changes in connections in editing a risk factor
 	 */
 	public void saveChangesConn () {
@@ -1020,8 +1090,8 @@ public class SKDBean implements Serializable {
 		populateEdit();
 	}
 	
-	/*
-	 * Method for saving changes in connections in editing stroke
+	/**
+	 * Method for saving changes in connections in editing stroke information
 	 */
 	public void saveChangesConnStroke () {
 		
@@ -1031,8 +1101,8 @@ public class SKDBean implements Serializable {
 		populateStrokeEdit();
 	}
 	
-	/*
-	 * Method to accept or reject update of risk factor
+	/**
+	 * Method to accept or reject modifications of risk factor
 	 */
 	public void saveEdit () {
 		
@@ -1112,13 +1182,14 @@ public class SKDBean implements Serializable {
 		InferenceBean.start();
 		SPTBean.start();
 		SPTBean.addNodeUpdate();
+		PatientInfoBean.start();
 		
 		//Close dialog box on successful update of node
 		RequestContext.getCurrentInstance().execute("editDialog.hide()");
 	}
 	
-	/*
-	 * Method to accept or reject update of stroke
+	/**
+	 * Method to accept or reject modification of stroke information
 	 */
 	public void saveStrokeEdit () {
 		
@@ -1160,20 +1231,21 @@ public class SKDBean implements Serializable {
 		InferenceBean.start();
 		SPTBean.start();
 		SPTBean.addNodeUpdate();
+		PatientInfoBean.start();
 		
 		//Close dialog box on successful update of node
 		RequestContext.getCurrentInstance().execute("editStrokeInfoDialog.hide()");
 	}
 	
 	/************Deleting Risk Factor Methods*************/
-	/*
+	/**
 	 * Method to populate the dummy string as an identifier of the node to be deleted
 	 */
 	public void populateDelete () {
 		dummy = selectedRf.getName();
 	}
 	
-	/*
+	/**
 	 * Method that removes node from the network
 	 */
 	public void deleteNode () {
@@ -1214,6 +1286,7 @@ public class SKDBean implements Serializable {
 			InferenceBean.start();
 			SPTBean.start();
 			SPTBean.removeDeleted(dummy);
+			PatientInfoBean.start();
 			context.addMessage(null, new FacesMessage("Deleting Risk Factor Successful", "Risk Factor Deleted; Check Affected (Highlighted) Risk Factors."));
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -1238,8 +1311,9 @@ public class SKDBean implements Serializable {
 	}
 	
 	/************Private Methods*************/
-	/*
+	/**
 	 * Method to retrieve all risk factors associated to the current user
+	 * @param list - list of risk factors
 	 */
 	private static void populateSKD (List<RiskFactor> list) {
 		Connection conn = JdbcUtil.startConnection();
@@ -1251,8 +1325,6 @@ public class SKDBean implements Serializable {
 			ps = conn.prepareStatement("SELECT * FROM risk_factors WHERE created_by = ? ");
 				ps.setInt(1, AccountMgtBean.getUserId());
 			rs = ps.executeQuery();
-			
-			System.out.println("Hello User - " + AccountMgtBean.getUserId());
 			
 			while(rs.next()){
 				RiskFactor rf = new RiskFactor();
@@ -1276,8 +1348,8 @@ public class SKDBean implements Serializable {
 		}
 	}
 	
-	/*
-	 * Initialize default states
+	/**
+	 * Initialize default states for editing the risk factor
 	 */
 	private void initStates () {
 		states = new ArrayList<State>();
@@ -1292,8 +1364,8 @@ public class SKDBean implements Serializable {
 		}
 	}
 	
-	/*
-	 * Initialize Pick List
+	/**
+	 * Initialize pick lists
 	 */
 	private void initPickList () {
 		//Initialize the probable parents of new node
@@ -1311,8 +1383,9 @@ public class SKDBean implements Serializable {
 		children = new DualListModel<String>(csource, ctarget);
 	}
 	
-	/*
-	 * Method to populate picklist of possible parents and children
+	/**
+	 * Method to populate pick list of possible parents and children of risk factor
+	 * @param nodeName - name of risk factor
 	 */
 	private void populatePickList (String nodeName) {
 		//Get parents and children of node
@@ -1339,8 +1412,14 @@ public class SKDBean implements Serializable {
 		origChildren.addAll(ctarget);
 	}
 	
-	/*
-	 * Method that will populate the probability table for editing
+	/**
+	 * Method that will populate the probability table for display and editing
+	 * 
+	 * @param model - pointer to the dynamic form
+	 * @param parents - list of parents of the risk factor
+	 * @param pstates - list of states of the parents of the risk factor
+	 * @param curStates - list of states of the risk factor
+	 * @param probs - list of the probability values from the risk factor's truth table
 	 */
 	private void populateProbTable (DynaFormModel model, List<String> parents, List<List<String>> pstates, List<String> curStates, List<Double> probs) {
 		DynaFormRow row = null;  
@@ -1351,6 +1430,7 @@ public class SKDBean implements Serializable {
 		columnEndIdx = 1;
 		outputs = 0;
 		
+		//Display parent states
 		for (int i = 0; i < parents.size(); i++) {
 			row =  model.createRegularRow();
 			row.addControl((new Probability(parents.get(i))), "output", 1, 1);
@@ -1368,6 +1448,7 @@ public class SKDBean implements Serializable {
 				columnEndIdx = tableDiv;
 		}
 		
+		//Display probability values
 		int cnt = 0;
 		for (int i = 0; i < curStates.size(); i++) {
 			row =  model.createRegularRow();
@@ -1381,8 +1462,9 @@ public class SKDBean implements Serializable {
 		}
 	}
 	
-	/*
+	/**
 	 * Method that retrieves the list of risk factor names
+	 * @param list - list of risk factor names
 	 */
 	private void retrievePickList (List<String> list) {
 		Connection conn = JdbcUtil.startConnection();
@@ -1415,8 +1497,10 @@ public class SKDBean implements Serializable {
 		}
 	}
 	
-	/*
-	 * Method to modify the source of a picklist after a transfer
+	/**
+	 * Method to modify the source of a pick list after a transfer
+	 * @param event - event fired when a risk factor is transferred from source to target
+	 * @param list - list of risk factor sources
 	 */
 	private void modifySource(TransferEvent event, DualListModel<String> list) {
 		if (event.isAdd()) {
@@ -1430,8 +1514,11 @@ public class SKDBean implements Serializable {
 		}
 	}
 	
-	/*
+	/**
 	 * Method for doing calculations in adding new state
+	 * @param name - identifier of the state
+	 * @param prob - probability value associated with the state
+	 * @param list - current list of states
 	 */
 	private void addNewState (String name, double prob, List<State> list) {
 		//If new state's probability is greater than 1, less than 0 or name is empty, then prompt
@@ -1469,7 +1556,6 @@ public class SKDBean implements Serializable {
 			//Update probability of new state that will be added
 			prob = (1.0 - sum);
 		} else if (sum < 1) {
-			System.out.println("ADD - " + (prob + (1.0 - sum)));
 			//Update probability of new state that will be added
 			prob = (prob + (1.0 - sum));
 		}
@@ -1484,8 +1570,10 @@ public class SKDBean implements Serializable {
 		prob = 0.0;
 	}
 	
-	/*
+	/**
 	 * Method for deleting a specified state from the list
+	 * @param stateToDel - name of state to be removed
+	 * @param list - list of states
 	 */
 	private void delSomeState (String stateToDel, List<State> list) {
 		for (int i = 0; i < list.size(); i++) {
@@ -1496,8 +1584,9 @@ public class SKDBean implements Serializable {
 		}
 	}
 	
-	/*
+	/**
 	 * Method to add/remove connections from parents/children of node
+	 * @param nodeName - name of risk factor of concern
 	 */
 	private void saveConnections (String nodeName) {
 		List<String> dummyList;
@@ -1517,7 +1606,7 @@ public class SKDBean implements Serializable {
 			for (String i : origParents)
 				InferenceBean.delArc(i, nodeName);
 		
-		//Remove connection from node being edited to its children in the network
+			//Remove connection from node being edited to its children in the network
 			dummyList.clear();
 			dummyList.addAll(children.getTarget());
 			
@@ -1541,8 +1630,10 @@ public class SKDBean implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Changes Made:", "Successfully saved changes made."));
 	}
 	
-	/*
+	/**
 	 * Accumulate in a list all the probabilities associated with the node being edited
+	 * @param model - pointer to the dynamic form
+	 * @return definition - list of probability values
 	 */
 	private double [] accProbabilities (DynaFormModel model) {
 		double [] definition = new double [outputs];
@@ -1553,7 +1644,6 @@ public class SKDBean implements Serializable {
 				cnt = 0;
 				continue;
 			}
-			//System.out.println("NUM - " + model.getControls().get(i).getData().toString());
 			definition[idx] = Double.parseDouble(((Probability) model.getControls().get(i).getData()).getValue().toString());
 			idx++;
 			cnt++;
@@ -1562,8 +1652,10 @@ public class SKDBean implements Serializable {
 		return definition;
 	}
 	
-	/*
+	/**
 	 * Method to convert the states into ranges suitable for the database
+	 * @param list - list of states
+	 * @return s - formatted states to be inserted into the database
 	 */
 	private String rangeToDb (List<State> list) {
 		
@@ -1575,7 +1667,7 @@ public class SKDBean implements Serializable {
 		return s;
 	}
 	
-	/*
+	/**
 	 * Reset values upon addition of node
 	 */
 	private void resetValues () {
@@ -1592,9 +1684,8 @@ public class SKDBean implements Serializable {
 	}
 	
 	/************GUI Manipulation*************/
-	/*
-	 * Method to set boolean values for enabling/disabling UI components
-	 * To normal values
+	/**
+	 * Method to set boolean values for enabling/disabling UI components (default values)
 	 */
 	private void noChangesMade () {
 		editStates = true;		//Render states tab
@@ -1606,9 +1697,8 @@ public class SKDBean implements Serializable {
 		editCancel = false;		//Render cancel button
 	}
 	
-	/*
-	 * Method to set boolean values for enabling/disabling UI components
-	 * After changes are made in States Tab
+	/**
+	 * Method to set boolean values for enabling/disabling UI components after changes are made in States Tab
 	 */
 	private void changesMadeStates () {
 		editStates = true;		//Render states tab
@@ -1622,9 +1712,8 @@ public class SKDBean implements Serializable {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Changes Made:", "Please save changes to enable other tabs."));
 	}
 	
-	/*
-	 * Method to set boolean values for enabling/disabling UI components
-	 * After changes are made in Connections Tab
+	/**
+	 * Method to set boolean values for enabling/disabling UI components after changes are made in Connections Tab
 	 */
 	private void changesMadeConn () {
 		editStates = false;		//Disable states tab
