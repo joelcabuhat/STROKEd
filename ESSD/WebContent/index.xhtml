@@ -1205,7 +1205,7 @@
 		  
 							<p:column headerText="Value (if applicable)" style="width: 12%;">  
 								<p:selectOneMenu value="#{riskFactors.selectedRange}" effect="fold"
-																>  
+																disabled="#{riskFactors.display}">  
 									<p:ajax listener="#{sPTBean.selectListener}" update="riskFactors :form:acc:output" />
 									<f:selectItems value="#{riskFactors.rangeValues}" var="ranges"/>
 								</p:selectOneMenu>  
