@@ -240,6 +240,10 @@ public class AdminBean implements Serializable {
 				context.addMessage(null, new FacesMessage("Adding New User Failed", "License should be unique."));
 				return;
 			}
+			
+			//If user is an admin, set user type to not a doctor
+			if(user.getType().equals("ADMIN"))
+				user.setUser_type("NA");
 					
 			//Insert everything in the database
 			ps = conn.prepareStatement("INSERT INTO user " +
@@ -264,6 +268,9 @@ public class AdminBean implements Serializable {
 				ps.setInt(7, AccountMgtBean.getUserId());
 				ps.setInt(8, AccountMgtBean.getUserId());				
 			ps.executeUpdate();
+			
+			//Reset input fields
+			user = new User();
 			
 			context.addMessage(null, new FacesMessage("Adding New User Success", "User is now added in the database."));
 
@@ -373,18 +380,21 @@ public class AdminBean implements Serializable {
 		ResultSet rs = null;
 		
 		try {
-			ps = conn.prepareStatement("SELECT user_id, password FROM user WHERE username = ?");
-				ps.setString(1, toDelete.getUsername());
-			rs = ps.executeQuery();
+			ps = conn.prepareStatement("SELECT password FROM user WHERE user_id = ?");
+				ps.setInt(1, AccountMgtBean.getUserId());
+			rs = ps.executeQuery();  //Get password of admin
+			if (rs.next()) {
+				if (passwordEncryptor.checkPassword(confirmPass, rs.getString(1))) {
+					ps = conn.prepareStatement("DELETE FROM user WHERE user_id = ?");
+						ps.setInt(1, toDelete.getUserId());
+					ps.executeUpdate();
 					
-			if (rs.next() && passwordEncryptor.checkPassword(confirmPass, toDelete.getPassword())) {
-				ps = conn.prepareStatement("DELETE FROM user WHERE user_id = ?");
-					ps.setInt(1, toDelete.getUserId());
-				ps.executeUpdate();
-				
-				context.addMessage(null, new FacesMessage("Deleting User Success", "User is now delete from the database."));
+					context.addMessage(null, new FacesMessage("Deleting User Success", "User is now deleted from the database."));
+				} else {
+					context.addMessage(null, new FacesMessage("Deleting User Failed", "Incorrect password."));
+				}
 			} else {
-				context.addMessage(null, new FacesMessage("Deleting User Failed", "Incorrect password."));
+				context.addMessage(null, new FacesMessage("Deleting User Failed", "Can't authenticate password."));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -411,6 +421,7 @@ public class AdminBean implements Serializable {
 	private void resetValues() {
 		newPass = "";
 		confirmPass = "";
+		
 		populateUsers();
 	}
 }

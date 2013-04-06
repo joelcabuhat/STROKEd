@@ -12,8 +12,6 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
-import org.primefaces.event.SelectEvent;
-
 import mapping.MapToClass;
 import model.RiskFactor;
 
@@ -42,7 +40,7 @@ public class PatientInfoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	protected static Patient patient = new Patient();
 	protected static List<String> docNameList = new ArrayList<String>();
-	static HashMap licenseList = new HashMap(); 
+	static HashMap<String, String> licenseList = new HashMap<String, String>(); 
 	protected static String docName = "";
 	protected static String docLicense = "";
 	protected static int docID=0;
@@ -86,14 +84,14 @@ public class PatientInfoBean implements Serializable {
 	 * Gets the license of all current users(GP, experts, etc.).
 	 * @return List of licenses of users(GP, experts, etc.).
 	 */
-	public HashMap getLicenseList() {
+	public HashMap<String, String> getLicenseList() {
 		return licenseList;
 	}
 	/**
 	 * Sets the list of license list.
 	 * @param licenseList List of license of all users(GP, experts, etc.).
 	 */
-	public void setLicenseList(HashMap licenseList) {
+	public void setLicenseList(HashMap<String, String> licenseList) {
 		PatientInfoBean.licenseList = licenseList;
 	}
 	/**
@@ -164,7 +162,7 @@ public class PatientInfoBean implements Serializable {
 	 * @param selectedLoadP The patient to be loaded.
 	 */
 	public void setSelectedLoadP(Patient selectedLoadP) {
-		this.selectedLoadP = selectedLoadP;
+		PatientInfoBean.selectedLoadP = selectedLoadP;
 	}
 	/**
 	 * Gets list of patients.
@@ -300,8 +298,7 @@ public class PatientInfoBean implements Serializable {
 	 * @return User's attributes.
 	 */
 	public String getDoctor(){
-		licenseList = new HashMap(); 
-		int tempCaseNum=0;
+		licenseList = new HashMap<String, String>(); 
 		Connection conn = JdbcUtil.startConnection();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
