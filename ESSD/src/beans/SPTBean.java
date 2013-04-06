@@ -170,7 +170,8 @@ public class SPTBean implements Serializable {
 	 * Method for firing action upon selecting a risk factor
 	 * @param se - event indicating a select action by the user
 	 */
-	public void selectListener(SelectEvent se) {
+	public static void selectListener(SelectEvent se) {
+		PatientInfoBean.flag = false;
 		for (RiskFactor i: selectedRfs) {
 			if(((RiskFactor)se.getObject()).getName().equals(i.getName()))
 				i.setSelectedRange(i.getRangeValues().get(0));
@@ -183,8 +184,17 @@ public class SPTBean implements Serializable {
 	 * @param se - event indicating the change in value of the dropdown
 	 */
 	public void selectListener(AjaxBehaviorEvent se) {
-		updateData(true);
+		String selected  = (String) se.getComponent().getAttributes().get("value");
 		
+		if(PatientInfoBean.flag == true){
+			for (RiskFactor i: selectedRfs) {
+				String temp=(String) se.getComponent().getAttributes().get("label");
+				if(temp.equals(i.getName()))
+					i.setSelectedRange(selected);
+			}		
+		}
+		
+		updateData(true);
 	}
 	
 	/**
@@ -192,6 +202,7 @@ public class SPTBean implements Serializable {
 	 * @param se - event indicating unselect action by the user
 	 */
 	public void unselectListener(UnselectEvent se) {
+		PatientInfoBean.flag = false;
 		updateData(false);
 	}
 	

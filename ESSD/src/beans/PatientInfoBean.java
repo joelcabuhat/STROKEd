@@ -12,6 +12,7 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.FlowEvent;
+import org.primefaces.event.SelectEvent;
 
 import mapping.MapToClass;
 import model.RiskFactor;
@@ -51,7 +52,7 @@ public class PatientInfoBean implements Serializable {
 	protected static List<Patient> patients;
 	protected List<Patient> filteredP;
 	private static String patientLoaded="none";
-	
+	public static boolean flag = false;
     	
 	/**
 	 * Gets the doctor's ID assigned to current patient.
@@ -222,6 +223,23 @@ public class PatientInfoBean implements Serializable {
 	public static void setPatientLoaded(String patientLoaded) {
 		PatientInfoBean.patientLoaded = patientLoaded;
 	}
+	
+	/**
+	 * Gets the flag value if select listener should be fired after loading a patient
+	 * @return flag Flag value set after loading a patient
+	 */
+	public static boolean isFlag() {
+		return flag;
+	}
+	
+	/**
+	 * Sets the flag value to true (patient is loaded) and false (no patient was loaded)
+	 * @param flag Flag value set after loading a patient
+	 */
+	public static void setFlag(boolean flag) {
+		PatientInfoBean.flag = flag;
+	}
+	
 	/**
 	 * Listener for a change of doctor assigned to patient. 
 	 */
@@ -743,6 +761,7 @@ public class PatientInfoBean implements Serializable {
 	 */
 	public void loadSpecificPatient(){	
 		
+		flag=true;
 		List<RiskFactor> listRf = new ArrayList<RiskFactor>();	
 		patient.setCaseNumStr(selectedP.getCaseNumStr());
 		setPatientLoaded(selectedP.getCaseNumStr());
@@ -763,7 +782,6 @@ public class PatientInfoBean implements Serializable {
 			dummy.setName(splits[8]);
 			dummy.setPhysical_exams(splits[9]);
 			dummy.setProbability(Integer.parseInt(splits[10]));
-			System.out.println("RANGE: "+splits[14]);
 			dummy.setRange(splits[11]);
 			dummy.setRangeValues();
 			dummy.setRf_id(splits[13]);
@@ -773,18 +791,29 @@ public class PatientInfoBean implements Serializable {
 			listRf.add(dummy);
 		}
 		
-		SPTBean.start();
-		SPTBean.selectedRfs = new RiskFactor[listRf.size()];
-		SPTBean.recSelected = new RiskFactor[listRf.size()];		
-		SPTBean.selectedRfs = listRf.toArray(SPTBean.selectedRfs);		
-		SPTBean.recSelected = SPTBean.selectedRfs;
-		SPTBean.updateData(true);
-		InferenceBean.doInference(SPTBean.selectedRfs, SPTBean.st);
 		
+		SPTBean.selectedRfs = listRf.toArray(SPTBean.selectedRfs);	
+		SPTBean.recSelected = SPTBean.selectedRfs;
+		
+		int c=-1;
 		for (RiskFactor i: SPTBean.selectedRfs){
-			System.out.println("RANGESPT: "+i.getSelectedRange());
-			
+				c++;		
+				for (int j = 0; j < SPTBean.rf.size(); j++) {
+					if (SPTBean.rf.get(j).getName().equals(i.getName())){
+						
+						SPTBean.rf.get(j).getRangeValues().remove(i.getSelectedRange());		
+						SPTBean.rf.get(j).getRangeValues().add(0, i.getSelectedRange());
+						
+						SPTBean.selectedRfs[c].getRangeValues().remove(i.getSelectedRange());
+						SPTBean.selectedRfs[c].getRangeValues().add(0, i.getSelectedRange());
+						
+						break;
+					}
+						
+				}																	
 		}
+
+		SPTBean.updateData(true);
 		
 		int indexRosQ=-1;
 		for(int ctr=0;ctr<RosierBean.rq1.size();ctr++){
@@ -798,9 +827,10 @@ public class PatientInfoBean implements Serializable {
 		RosierBean.result.setScore(selectedP.getRosScore());
 		RosierBean.whatDiagnosis();
 		PatientInfoBean.start();
+		
 		RequestContext.getCurrentInstance().execute("loading.hide()");
 		RequestContext.getCurrentInstance().execute("confirmLoadDialog.hide()");
-		RequestContext.getCurrentInstance().execute("loadPatientDialog.hide()");		
+		RequestContext.getCurrentInstance().execute("loadPatientDialog.hide()");			
 	}
 	
 	/**

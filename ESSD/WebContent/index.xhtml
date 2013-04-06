@@ -856,7 +856,7 @@
 				       	</p:column>  
 						<p:column style="width: 25%" headerText="Load">
 							<center>
-				        		<p:commandButton id="infoP" icon="ui-icon-person" update=":form:confirmLoadDialog :form:displayPpi" oncomplete="confirmLoadDialog.show()">
+				        		<p:commandButton id="infoP" icon="ui-icon-arrowthickstop-1-s" update=":form:confirmLoadDialog :form:displayPpi" oncomplete="confirmLoadDialog.show()">
 					          		<f:setPropertyActionListener value="#{pidDialog}" target="#{patientInfoBean.selectedP}" />	
 					          	</p:commandButton>
 							</center>	
@@ -1205,6 +1205,8 @@
 		  
 							<p:column headerText="Value (if applicable)" style="width: 12%;">  
 								<p:selectOneMenu value="#{riskFactors.selectedRange}" effect="fold"
+																rendered="${not empty riskFactors.rangeValues}"
+																label="#{riskFactors.name}"
 																disabled="#{riskFactors.display}">  
 									<p:ajax listener="#{sPTBean.selectListener}" update="riskFactors :form:acc:output" />
 									<f:selectItems value="#{riskFactors.rangeValues}" var="ranges"/>
