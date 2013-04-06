@@ -1185,12 +1185,13 @@
 									paginator="true" style="width: 100%; margin-top: 10px;"
 									value="#{sPTBean.rfDataModel}" selection="#{sPTBean.selectedRfs}"
 									filteredValue="#{sPTBean.filteredRfs}"
-									emptyMessage="No risk factors found with given search criteria.">  
+									emptyMessage="No risk factors found with given search criteria."
+									>  
 						
 							<p:ajax event="rowSelectCheckbox" listener="#{sPTBean.selectListener}" update="riskFactors :form:acc:output"/>
 							<p:ajax event="rowUnselectCheckbox" listener="#{sPTBean.unselectListener}" update="riskFactors :form:acc:output"/>
 							  
-							<p:column selectionMode="multiple" style="width: 2%" />
+							<p:column selectionMode="multiple" style="width: 2%" styleClass="hideSelectAll" />
 									
 							<p:column id="rfName" headerText="Risk Factor" style="width: 20%"
 											sortBy="#{riskFactors.name}"

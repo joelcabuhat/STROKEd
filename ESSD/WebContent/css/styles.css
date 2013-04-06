@@ -226,3 +226,7 @@ body {
 .odd-row {
    background-color: #ffffff;
 }
+
+.hideSelectAll .ui-chkbox.ui-chkbox-all.ui-widget {
+	display: none;
+}
