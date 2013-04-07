@@ -19,6 +19,27 @@
 	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
 	<title>STROKEd</title>	
 	
+	<script type="text/javascript">
+	
+		var loggedbefore = false;
+	
+	
+		$(document).ready(function(){
+			if(loggedbefore==true){
+				$(document).location.reload();
+				var loggedbefore = false;
+				$('#content').hide();
+			}else{
+				
+			}
+			
+		});
+		
+		function setvar(){
+			var loggedbefore=true;
+		};
+	
+	</script>
 	
 </h:head>
 
@@ -40,7 +61,7 @@
 					<p:menuitem value="Edit Users" styleClass="adminMenu" icon="ui-icon-pencil" oncomplete="editUserDialog.show()" actionListener="#{adminBean.populateUsers}" update=":form:editUserDialog"/>
 				</p:tieredMenu>
 				<!--   <h:outputText value="Welcome #{accountMgtBean.username} !, " rendered="#{accountMgtBean.loggedIn}" styleClass="text" /> -->
-				<p:commandButton value="Log Out" icon="ui-icon-power" ajax="true" update="@all" actionListener="#{accountMgtBean.logOut}" rendered="#{accountMgtBean.loggedIn}" style="font-size: 13px;"/>
+				<p:commandButton value="Log Out" icon="ui-icon-power" ajax="true" onclick="setvar()" update="@all" actionListener="#{accountMgtBean.logOut}" rendered="#{accountMgtBean.loggedIn}" style="font-size: 13px;"/>
 				
 					
 									
@@ -922,13 +943,13 @@
     		hideEffect="fade" modal="true">
     			<center>
     			<h:form>
-	    			<p:inputText id="newUsername" value="#{adminBean.user.username}" styleClass="addUserInput" validatorMessage="Username is Required">
-	    				
+	    			<p:inputText id="newUsername" label="Username" value="#{adminBean.user.username}" styleClass="addUserInput" validatorMessage="Username is Required">
+	    		
 	    			</p:inputText><br/><br/>
 	    			<p:watermark for="newUsername" value="Username"></p:watermark>
 	    			<p:message for="newUsername" style="color:red" />
 	    			
-	    			<p:password id="newPassword" value="#{adminBean.user.password}" styleClass="addUserInput">
+	    			<p:password id="newPassword" label="Password" value="#{adminBean.user.password}" styleClass="addUserInput">
 	    				 
 	    			</p:password><br/><br/>
 	    			<p:watermark for="newPassword" value="Password"></p:watermark>
@@ -940,9 +961,9 @@
 	    			<p:watermark for="newName" value="Name"></p:watermark>
 	    			<p:message for="newName" style="color:red" />
 	    			
-	    			<p:inputText id="newLicense" value="#{adminBean.user.license}" styleClass="addUserInput">
+	    			<p:inputMask mask="999999" id="newLicense" value="#{adminBean.user.license}" styleClass="addUserInput">
 	    				
-	    			</p:inputText><br/><br/>
+	    			</p:inputMask><br/><br/>
 	    			<p:watermark for="newLicense" value="License" />
 	    			<p:message for="newLicense" style="color:red" />
 	    			
@@ -1352,7 +1373,7 @@
 <!-- Bottom Part of the Web Application -->
 	<div id="footer">
 		<div id="links"><center>
-			<h:link styleClass="linktext" outcome="help" target="_blank">HELP</h:link>	|
+			<h:link styleClass="linktext" outcome="help">HELP</h:link>	|
 			<h:outputLink styleClass="linktext" value="http://aessd-cvmig.net46.net/about.php" target="_blank">ABOUT</h:outputLink>	|
 			<h:outputLink styleClass="linktext"  value="http://aessd-cvmig.net46.net/contact.php" target="_blank">CONTACT US</h:outputLink>		
 			<p style="font-family:'Helvetica';">University of the Philippines, Diliman<br />Copyright &copy; 2012</p>
