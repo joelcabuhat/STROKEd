@@ -1,0 +1,411 @@
+<?xml version="1.0"?>
+	<data>
+		<patient_1>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Snoring Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Non Diabetic Hypertensive Absent Yes No Hemorrhagic_Stroke</range>
+		</patient_1>
+		<patient_2>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Snoring Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent Yes Yes Ischemic_Stroke</range>
+		</patient_2>
+		<patient_3>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Snoring Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Diabetic Hypertensive Absent Yes Yes Ischemic_Stroke</range>
+		</patient_3>
+		<patient_4>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Normal Absent No Ischemic_Stroke</range>
+		</patient_4>
+		<patient_5>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Overweight Non Smoker Excessive Drinker Non Diabetic Hypertensive Present Yes Yes Ischemic_Stroke</range>
+		</patient_5>
+		<patient_6>
+			<risk_factor>40Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Normal Absent No Hemorrhagic_Stroke</range>
+		</patient_6>
+		<patient_7>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Snoring Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent Yes Yes Ischemic_Stroke</range>
+		</patient_7>
+		<patient_8>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Snoring Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Current Smoker Non Drinker Diabetic Hypertensive Absent Yes No Ischemic_Stroke</range>
+		</patient_8>
+		<patient_9>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Snoring Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Excessive Drinker Diabetic Hypertensive Absent Yes No Ischemic_Stroke</range>
+		</patient_9>
+		<patient_10>
+			<risk_factor>44Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent No Hemorrhagic_Stroke</range>
+		</patient_10>
+		<patient_11>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Non Diabetic Hypertensive Absent Yes Yes Ischemic_Stroke</range>
+		</patient_11>
+		<patient_12>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Non Diabetic Hypertensive Absent No Yes Ischemic_Stroke</range>
+		</patient_12>
+		<patient_13>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Hemorrhagic_Stroke</range>
+		</patient_13>
+		<patient_14>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Normal Absent Yes Yes Ischemic_Stroke</range>
+		</patient_14>
+		<patient_15>
+			<risk_factor>49Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Normal Present Yes Yes Ischemic_Stroke</range>
+		</patient_15>
+		<patient_16>
+			<risk_factor>52Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Excessive Drinker Non Diabetic Hypertensive Absent No Yes Ischemic_Stroke</range>
+		</patient_16>
+		<patient_17>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Ischemic_Stroke</range>
+		</patient_17>
+		<patient_18>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent No No Ischemic_Stroke</range>
+		</patient_18>
+		<patient_19>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Diabetic Hypertensive Absent Yes Yes Ischemic_Stroke</range>
+		</patient_19>
+		<patient_20>
+			<risk_factor>56Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Present No Ischemic_Stroke</range>
+		</patient_20>
+		<patient_21>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Current Smoker Occasional Drinker Diabetic Hypertensive Absent Yes Yes Ischemic_Stroke</range>
+		</patient_21>
+		<patient_22>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent Yes Yes Ischemic_Stroke</range>
+		</patient_22>
+		<patient_23>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Hemorrhagic_Stroke</range>
+		</patient_23>
+		<patient_24>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Normal Absent No Ischemic_Stroke</range>
+		</patient_24>
+		<patient_25>
+			<risk_factor>61Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Hemorrhagic_Stroke</range>
+		</patient_25>
+		<patient_26>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Ischemic_Stroke</range>
+		</patient_26>
+		<patient_27>
+			<risk_factor>63Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Normal Absent No Yes Ischemic_Stroke</range>
+		</patient_27>
+		<patient_28>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Excessive Drinker Non Diabetic Hypertensive Absent No Yes Ischemic_Stroke</range>
+		</patient_28>
+		<patient_29>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Diabetic Hypertensive Absent Yes Yes Ischemic_Stroke</range>
+		</patient_29>
+		<patient_30>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent Yes Yes Hemorrhagic_Stroke</range>
+		</patient_30>
+		<patient_31>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Present No Ischemic_Stroke</range>
+		</patient_31>
+		<patient_32>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent Yes Yes Ischemic_Stroke</range>
+		</patient_32>
+		<patient_33>
+			<risk_factor>69Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Non Diabetic Hypertensive Absent Yes No Ischemic_Stroke</range>
+		</patient_33>
+		<patient_34>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent No Yes Ischemic_Stroke</range>
+		</patient_34>
+		<patient_35>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Yes Hemorrhagic_Stroke</range>
+		</patient_35>
+		<patient_36>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent No Yes Ischemic_Stroke</range>
+		</patient_36>
+		<patient_37>
+			<risk_factor>73Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Ischemic_Stroke</range>
+		</patient_37>
+		<patient_38>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Diabetic Hypertensive Absent No Yes Ischemic_Stroke</range>
+		</patient_38>
+		<patient_39>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent No Hemorrhagic_Stroke</range>
+		</patient_39>
+		<patient_40>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Present Yes Yes Ischemic_Stroke</range>
+		</patient_40>
+		<patient_41>
+			<risk_factor>77Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Hemorrhagic_Stroke</range>
+		</patient_41>
+		<patient_42>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent No Yes Ischemic_Stroke</range>
+		</patient_42>
+		<patient_43>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent Yes Yes Ischemic_Stroke</range>
+		</patient_43>
+		<patient_44>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Current Smoker Non Drinker Diabetic Hypertensive Present Yes Yes Ischemic_Stroke</range>
+		</patient_44>
+		<patient_45>
+			<risk_factor>81Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent Yes Yes Hemorrhagic_Stroke</range>
+		</patient_45>
+		<patient_47>
+			<risk_factor>84Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Diabetic Hypertensive Absent No Ischemic_Stroke</range>
+		</patient_47>
+		<patient_48>
+			<risk_factor>85Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Present No Ischemic_Stroke</range>
+		</patient_48>
+		<patient_49>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Excessive Drinker Diabetic Normal Absent No Yes Ischemic_Stroke</range>
+		</patient_49>
+		<patient_50>
+			<risk_factor>87Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Yes Hemorrhagic_Stroke</range>
+		</patient_50>
+		<patient_51>
+			<risk_factor>88Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Excessive Drinker Non Diabetic Hypertensive Absent Yes Yes Ischemic_Stroke</range>
+		</patient_51>
+		<patient_52>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Ischemic_Stroke</range>
+		</patient_52>
+		<patient_53>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Current Smoker Non Drinker Diabetic Hypertensive Absent No Yes Ischemic_Stroke</range>
+		</patient_53>
+		<patient_54>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Diabetic Hypertensive Absent No Hemorrhagic_Stroke</range>
+		</patient_54>
+		<patient_55>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Normal Absent Yes Yes Ischemic_Stroke</range>
+		</patient_55>
+		<patient_56>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Ischemic_Stroke</range>
+		</patient_56>
+		<patient_57>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent Yes Yes Ischemic_Stroke</range>
+		</patient_57>
+		<patient_58>
+			<risk_factor>95Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent No No Ischemic_Stroke</range>
+		</patient_58>
+		<patient_59>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Current Smoker Non Drinker Non Diabetic Normal Absent No Yes Ischemic_Stroke</range>
+		</patient_59>
+		<patient_60>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Snoring Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Present No Yes Ischemic_Stroke</range>
+		</patient_60>
+		<patient_61>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Excessive Drinker Diabetic Hypertensive Absent No Hemorrhagic_Stroke</range>
+		</patient_61>
+		<patient_62>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Present No Ischemic_Stroke</range>
+		</patient_62>
+		<patient_63>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Normal Absent No Ischemic_Stroke</range>
+		</patient_63>
+		<patient_64>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent Ischemic_Stroke</range>
+		</patient_64>
+		<patient_65>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Non Diabetic Hypertensive Absent No Yes Ischemic_Stroke</range>
+		</patient_65>
+		<patient_66>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent Ischemic_Stroke</range>
+		</patient_66>
+		<patient_68>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Snoring Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Yes Hemorrhagic_Stroke</range>
+		</patient_68>
+		<patient_69>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Ischemic_Stroke</range>
+		</patient_69>
+		<patient_70>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Current Smoker Non Drinker Diabetic Hypertensive Absent Yes Yes Ischemic_Stroke</range>
+		</patient_70>
+		<patient_71>
+			<risk_factor>endWeight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Hemorrhagic_Stroke</range>
+		</patient_71>
+		<patient_72>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Non Diabetic Hypertensive Absent No Yes None</range>
+		</patient_72>
+		<patient_73>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent Yes Yes None</range>
+		</patient_73>
+		<patient_74>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent No Yes None</range>
+		</patient_74>
+		<patient_75>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Excessive Drinker Diabetic Hypertensive Absent No Yes None</range>
+		</patient_75>
+		<patient_76>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent No Yes None</range>
+		</patient_76>
+		<patient_77>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Present No Yes None</range>
+		</patient_77>
+		<patient_78>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Yes None</range>
+		</patient_78>
+		<patient_79>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Normal Absent No Yes None</range>
+		</patient_79>
+		<patient_80>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Present No Yes None</range>
+		</patient_80>
+		<patient_81>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Overweight Current Smoker Excessive Drinker Non Diabetic Hypertensive Present Yes Yes Ischemic_Stroke</range>
+		</patient_81>
+		<patient_82>
+			<risk_factor>12Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Excessive Drinker Non Diabetic Normal Absent No No None</range>
+		</patient_82>
+		<patient_83>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No Yes None</range>
+		</patient_83>
+		<patient_84>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent No None</range>
+		</patient_84>
+		<patient_85>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent Yes No None</range>
+		</patient_85>
+		<patient_86>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Present No Yes None</range>
+		</patient_86>
+		<patient_87>
+			<risk_factor>17Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent No None</range>
+		</patient_87>
+		<patient_88>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Non Diabetic Normal Absent No None</range>
+		</patient_88>
+		<patient_89>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent No None</range>
+		</patient_89>
+		<patient_90>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No None</range>
+		</patient_90>
+		<patient_91>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Excessive Drinker Non Diabetic Hypertensive Absent No None</range>
+		</patient_91>
+		<patient_92>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent None</range>
+		</patient_92>
+		<patient_93>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Snoring Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Excessive Drinker Diabetic Hypertensive Absent Yes Yes None</range>
+		</patient_93>
+		<patient_94>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Normal Absent No None</range>
+		</patient_94>
+		<patient_95>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent No None</range>
+		</patient_95>
+		<patient_96>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Diabetic Hypertensive Absent Yes Yes None</range>
+		</patient_96>
+		<patient_97>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Normal Present No No None</range>
+		</patient_97>
+		<patient_98>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Current Smoker Excessive Drinker Non Diabetic Hypertensive Absent Yes None</range>
+		</patient_98>
+		<patient_99>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Stroke</risk_factor>
+			<range>Normal Non Smoker Excessive Drinker Diabetic Hypertensive Absent No None</range>
+		</patient_99>
+		<patient_100>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Absent Yes No None</range>
+		</patient_100>
+		<patient_101>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Non Drinker Non Diabetic Hypertensive Present No Yes None</range>
+		</patient_101>
+		<patient_102>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Excessive Drinker Diabetic Hypertensive Absent No No None</range>
+		</patient_102>
+		<patient_103>
+			<risk_factor>Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Excessive Drinker Non Diabetic Normal Absent No No None</range>
+		</patient_103>
+		<patient_104>
+			<risk_factor>34Weight Smoking Alcohol_Intake Diabetes Hypertension Non_Valvular_Atrial_Fibrillation Family_History_Stroke Snoring Stroke</risk_factor>
+			<range>Normal Non Smoker Occasional Drinker Diabetic Hypertensive Present Yes Yes None</range>
+		</patient_104>
+	</data>

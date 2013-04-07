@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+	<data>
+		<others>
+			<doctor>2</doctor>
+			<sex>null</sex>
+			<age>0</age>
+			<complaint></complaint>
+		</others>
+		<rosier>
+			<questions>false#false#false#false#false#false#false</questions>
+			<diagnosis>Non-stroke</diagnosis>
+			<score>0</score>
+		</rosier>
+		<spt>
+			<risk-factors>1#2012-08-23 11:32:13.0#####1#2012-08-23 11:32:13.0#Age##100#Below 39/Within 40 To 64/Within 65 To 74/Within 75 To 84/Above 85/#[Below 39, Within 40 To 64, Within 65 To 74, Within 75 To 84, Above 85]#1#Below 39##null@1#2012-08-28 17:29:14.0#Physical activity is any body movement that works your muscles and requires more energy than resting. Walking, running, dancing, swimming, yoga, and gardening are a few examples of physical activity. http://www.nhlbi.nih.gov####1#2012-08-28 17:29:14.0#Physical Activity##100#Not Active/Active/#[Not Active, Active]#2#Not Active##null@1#2012-08-28 17:29:14.0#The customary amount and kind of food and drink taken by a person from day to day; more narrowly, a diet planned to meet specific requirements of the individual, including or excluding certain foods. http://medical-dictionary.thefreedictionary.com####1#2012-08-28 17:29:14.0#Diet##100#Healthy Diet/Poor Diet/#[Healthy Diet, Poor Diet]#3#Healthy Diet##null@1#2012-08-28 17:29:14.0#####1#2012-08-28 17:29:14.0#Weight##100#Normal/Underweight/Overweight/#[Normal, Underweight, Overweight]#4#Normal##null@1#2012-08-28 17:29:14.0#A Total Cholesterol Level Measures Total Fats in the Blood. Total cholesterol levels between 200 and 239 mg/dL are considered borderline for high cholesterol. http://cholesterol.about.com####1#2012-08-28 17:29:14.0#Total Cholesterol##100#Normal/High/#[Normal, High]#5#Normal##null</risk-factors>
+			<hemorrhagic-stroke>0.23453455065071463</hemorrhagic-stroke>
+			<ischemic-stroke>0.29661665258597025</ischemic-stroke>
+			<none>0.468848796763315</none>
+		</spt>
+	</data>

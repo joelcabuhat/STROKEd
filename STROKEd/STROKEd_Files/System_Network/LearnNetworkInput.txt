@@ -1,0 +1,2 @@
+Age Sex Non_Valvular_Atrial_Fibrillation Hypertension Stroke
+Within_65_To_74 Female Present Hypertensive Ischemic_Stroke

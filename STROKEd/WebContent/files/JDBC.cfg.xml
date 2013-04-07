@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+	<jdbc-connection-details>
+		<mysql-driver>com.mysql.jdbc.Driver</mysql-driver>
+		<url>jdbc:mysql://localhost/ess_db</url>
+		<user>admin</user>
+		<password>password</password>
+	</jdbc-connection-details>

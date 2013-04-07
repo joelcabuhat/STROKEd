@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+	<data>
+		<others>
+			<doctor>1</doctor>
+			<sex>null</sex>
+			<age>0</age>
+			<complaint></complaint>
+		</others>
+		<rosier>
+			<questions>false#false#false#false#false#false#false</questions>
+			<diagnosis>Non-stroke</diagnosis>
+			<score>0</score>
+		</rosier>
+		<spt>
+			<risk-factors>1#2012-08-28 17:29:14.0#####1#2012-08-28 17:29:14.0#Weight##100#Normal/Underweight/Overweight/#[Normal, Underweight, Overweight]#4#Normal##null@1#2012-08-28 17:29:14.0#There's no way around it. Smoking is bad for your health. Smoking harms nearly every organ of the body. http://www.nlm.nih.gov####1#2012-08-28 17:29:14.0#Smoking##100#Non Smoker/Current Smoker/#[Non Smoker, Current Smoker]#7#Non Smoker##null@1#2012-08-28 17:29:14.0#Alcohol use is a slippery slope. Moderate drinking can offer some health benefits. But it's easy to drink too heavily, leading to serious health consequences. http://www.mayoclinic.com####1#2012-08-28 17:29:14.0#Alcohol Intake##100#Non Drinker/Occasional Drinker/Regular Drinker/Excessive Drinker/#[Non Drinker, Occasional Drinker, Regular Drinker, Excessive Drinker]#8#Non Drinker##null@1#2012-08-28 17:29:14.0#Diabetes is a disease in which your blood glucose, or sugar, levels are too high. Glucose comes from the foods you eat. Insulin is a hormone that helps the glucose get into your cells to give them energy. With type 1 diabetes, your body does not make insulin. With type 2 diabetes, the more common type, your body does not make or use insulin well. Without enough insulin, the glucose stays in your blood.####1#2012-08-28 17:29:14.0#Diabetes##100#Non Diabetic/Diabetic/#[Non Diabetic, Diabetic]#9#Non Diabetic##null@1#2012-08-28 17:29:14.0#Hypertension is the term used to describe high blood pressure. Blood pressure is a measurement of the force against the walls of your arteries as your heart pumps blood through your body. High blood pressure (hypertension) is when your blood pressure is 140/90 mmHg or above most of the time. Normal blood pressure is when your blood pressure is lower than 120/80 mmHg most of the time. 
+
+http://www.ncbi.nlm.nih.gov####1#2012-08-28 17:29:14.0#Hypertension##100#Normal/Hypertensive/#[Normal, Hypertensive]#10#Hypertensive##null@1#2012-08-28 17:29:14.0#Non-valvular atrial fibrillation refers to atrial fibrillation that does not occur in the setting of mitral valve disease such as mitral stenosis or mitral regurgitation. https://www.healthtap.com####1#2012-08-28 17:29:14.0#Non Valvular Atrial Fibrillation##100#Absent/Present/#[Absent, Present]#12#Absent##null@1#2012-08-28 17:29:14.0#While we are asleep, turbulent airflow can cause the tissues of the nose and throat to vibrate and give rise to snoring. Essentially, snoring is a sound resulting from turbulent airflow that causes tissues to vibrate during sleep. Frequently, people who do not regularly snore will report snoring after a viral illness, after drinking alcohol, or when taking some medications. http://www.medicinenet.com####1#2012-08-28 17:29:14.0#Snoring##100#No/Yes/#[No, Yes]#18#Yes##null@1#2012-08-28 17:29:14.0#Stroke occurred to some family members. (Hereditary characteristic of stroke.)####1#2012-08-28 17:29:14.0#Family History Stroke##100#Yes/No/#[Yes, No]#19#Yes##null</risk-factors>
+			<hemorrhagic-stroke>0.23645844583288544</hemorrhagic-stroke>
+			<ischemic-stroke>0.3304589868374595</ischemic-stroke>
+			<none>0.4330825673296551</none>
+		</spt>
+	</data>
