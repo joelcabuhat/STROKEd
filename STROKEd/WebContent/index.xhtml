@@ -19,12 +19,15 @@
 	<link href="./css/styles.css" rel="stylesheet" type="text/css" />
 	<title>STROKEd</title>	
 	
+	
+	
 	<script type="text/javascript">
 	
 		var loggedbefore = false;
 	
 	
 		$(document).ready(function(){
+			$('.hidenotif').hide();
 			if(loggedbefore==true){
 				$(document).location.reload();
 				var loggedbefore = false;
@@ -40,6 +43,15 @@
 		};
 	
 	</script>
+	
+	<script type="text/javascript">
+		
+		$('.createuser').click(function(){
+			$('.hidenotif').show();
+		});
+	
+	</script>
+	
 	
 </h:head>
 
@@ -512,7 +524,7 @@
 								<h:outputText value="Name: " style="font-weight:bold; font-size:14px;"/>  
 							</h:column>
 							<h:column>	
-								<h:inputText value="#{sKDBean.newNodeName}" style="font-size:12px;" size="32" maxlength="32" />
+								<p:inputMask mask="*?*********************************" value="#{sKDBean.newNodeName}" style="font-size:12px;" size="32" maxlength="32" />
 							</h:column>
 								
 							<h:column>
@@ -942,30 +954,36 @@
     		<p:dialog header="Add New User" widgetVar="addUserDialog" id="addUserDialog" showEffect="fade" 
     		hideEffect="fade" modal="true">
     			<center>
-    			<h:form>
-	    			<p:inputText id="newUsername" label="Username" value="#{adminBean.user.username}" styleClass="addUserInput" validatorMessage="Username is Required">
+    			<h:form class="adduserform">
+    				
+	    			<p:inputMask mask="******?****************" id="newUsername" styleClass="newUsername" label="Username" value="#{adminBean.user.username}" validatorMessage="Username is Required">
 	    		
-	    			</p:inputText><br/><br/>
+	    			</p:inputMask>
 	    			<p:watermark for="newUsername" value="Username"></p:watermark>
 	    			<p:message for="newUsername" style="color:red" />
+	    			<p style="color:blue; font-size:10px !important;">Username should be at least 6 characters</p>
+	    			
 	    			
 	    			<p:password id="newPassword" label="Password" value="#{adminBean.user.password}" styleClass="addUserInput">
 	    				 
-	    			</p:password><br/><br/>
+	    			</p:password>
 	    			<p:watermark for="newPassword" value="Password"></p:watermark>
 	    			<p:message for="newPassword" style="color:red" />
+	    			<p style="color:blue; font-size:10px !important;">Password should be at least 8 characters</p>
 	    			
-	    			<p:inputText id="newName" value="#{adminBean.user.name}" styleClass="addUserInput">
+	    			<p:inputMask mask="******?****************" id="newName" value="#{adminBean.user.name}" styleClass="addUserInput">
 	    				
-	    			</p:inputText><br/><br/>
+	    			</p:inputMask>
 	    			<p:watermark for="newName" value="Name"></p:watermark>
 	    			<p:message for="newName" style="color:red" />
+	    			<p style="color:blue; font-size:10px !important;">Username should be at least 6 characters</p>
 	    			
 	    			<p:inputMask mask="999999" id="newLicense" value="#{adminBean.user.license}" styleClass="addUserInput">
 	    				
 	    			</p:inputMask><br/><br/>
 	    			<p:watermark for="newLicense" value="License" />
 	    			<p:message for="newLicense" style="color:red" />
+	    			
 	    			
 	    			<p:selectOneMenu id="newType" value="#{adminBean.user.type}">
 	    				<f:selectItem itemLabel="Select Type" itemValue="" />
@@ -982,7 +1000,7 @@
 	    			</p:selectOneMenu>
 	    			<br/>
     			
-    			<p:commandButton icon="ui-icon-disk" value="Create New User"
+    			<p:commandButton styleClass="createuser" icon="ui-icon-disk" value="Create New User"
     							actionListener="#{adminBean.addUser}" 
     							oncomplete="addUserDialog.hide()"
     							update=":form:growl"/>
@@ -1033,13 +1051,13 @@
     		<p:dialog header="Edit User Information" widgetVar="editUserInfoDialog" id="editUserInfoDialog" showEffect="fade" 
     		hideEffect="fade" modal="true">
     			<h:outputText value="Username" />
-    			<p:inputText value="#{adminBean.selectedUser.username}" ></p:inputText><br/><br/>
+    			<p:inputMask mask="******?**********" value="#{adminBean.selectedUser.username}" ></p:inputMask><br/><br/>
     			<h:outputText value="New Password"></h:outputText>
     			<p:password value="#{adminBean.newPass}" ></p:password><br/><br/>
     			<h:outputText value="Name"></h:outputText>
-    			<p:inputText value="#{adminBean.selectedUser.name}"></p:inputText><br/><br/><br/>
+    			<p:inputMask mask="******?**********" value="#{adminBean.selectedUser.name}"></p:inputMask><br/><br/><br/>
     			<h:outputText value="License"></h:outputText>
-    			<p:inputText value="#{adminBean.selectedUser.license}"></p:inputText><br/><br/><br/>
+    			<p:inputMask mask="999999" value="#{adminBean.selectedUser.license}"></p:inputMask><br/><br/><br/>
     			<p:selectOneMenu value="#{adminBean.selectedUser.type}">
 	    				<f:selectItem itemLabel="Select Type" itemValue="" />
 	    				<f:selectItem itemLabel="Administrator" itemValue="ADMIN" />
