@@ -218,5 +218,7 @@ public class AccountMgtBean implements Serializable {
 		loggedIn = false;
 		expert = false;
 		SPTBean.resetSPT();
+		RequestContext requestContext = RequestContext.getCurrentInstance();  
+		requestContext.execute("reload()");
 	}
 }
