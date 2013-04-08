@@ -25,9 +25,10 @@
 	
 		var loggedbefore = false;
 	
-	
+		
+		
 		$(document).ready(function(){
-			$('.hidenotif').hide();
+			
 			if(loggedbefore==true){
 				$(document).location.reload();
 				var loggedbefore = false;
@@ -39,10 +40,10 @@
 		});
 		
 		function reload(){
-			$(document).location.reload();
-			$('#content').hide();
+			location.reload();
+			
 		}
-		
+		 
 		function setvar(){
 			var loggedbefore=true;
 		};
@@ -78,7 +79,8 @@
 					<p:menuitem value="Edit Users" styleClass="adminMenu" icon="ui-icon-pencil" oncomplete="editUserDialog.show()" actionListener="#{adminBean.populateUsers}" update=":form:editUserDialog"/>
 				</p:tieredMenu>
 				<!--   <h:outputText value="Welcome #{accountMgtBean.username} !, " rendered="#{accountMgtBean.loggedIn}" styleClass="text" /> -->
-				<p:commandButton value="Log Out" icon="ui-icon-power" ajax="true" onclick="setvar()" update="@all" actionListener="#{accountMgtBean.logOut}" rendered="#{accountMgtBean.loggedIn}" style="font-size: 13px;"/>
+				<p:commandButton value="Log Out" icon="ui-icon-power" ajax="true" update="@all" onclick="index" actionListener="#{accountMgtBean.logOut}" rendered="#{accountMgtBean.loggedIn}" style="font-size: 13px;"/>
+				
 				
 					
 									
